@@ -1,6 +1,9 @@
+import Routes from 'routes/index';
+import AppWrapper from 'style/scApp';
+
 const App = () => {
   console.log('hello');
-  return <h1>App</h1>;
+  return <AppWrapper>{Routes}</AppWrapper>;
 };
 
 export default App;
