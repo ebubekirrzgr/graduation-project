@@ -3,13 +3,13 @@ import { BrowserRouter, Switch } from 'react-router-dom';
 
 import ProtectedRoute from './ProtectedRoute';
 
-const HomePage = lazy(() => import('pages/Homepage'));
+const Home = lazy(() => import('pages/Homepage'));
 
 const routerPaths = [
   {
     path: '/',
     name: 'home',
-    component: HomePage,
+    component: Home,
     exact: true,
     props: {},
   },
