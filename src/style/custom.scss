@@ -1,0 +1,9 @@
+@import './reset.scss';
+@import './_variables';
+
+* {
+  font-family: 'Nunito', sans-serif;
+}
+.App {
+  background-color: $white-200;
+}

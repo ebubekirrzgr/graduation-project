@@ -1,0 +1,103 @@
+@import '../../style/variables';
+
+h1 {
+  font-size: calc(clamp(20px, 3.5vw, 32px));
+  font-weight: bold;
+  color: $gray-300;
+  margin-bottom: 10px;
+}
+h2 {
+  font-size: 15px;
+  font-weight: regular;
+  color: $gray-300;
+  margin-bottom: 10px;
+}
+h3 {
+  font-size: 12px;
+  font-weight: regular;
+  color: $gray-200;
+  margin-bottom: 10px;
+  text-align: right;
+}
+input {
+  border: none;
+  background-color: $gray-100;
+  border-radius: 8px;
+  font-size: 16px;
+  margin-bottom: 10px;
+  width: 100%;
+  height: 45px;
+  outline: none;
+  padding: 8px;
+
+  &:active,
+  &:focus {
+    border: 1px solid $blue-200;
+    background-color: $blue-100;
+  }
+}
+button {
+  font-size: 18px;
+  background-color: $blue-200;
+  color: $white-100;
+  border-radius: 8px;
+  border: none;
+  width: 100%;
+  height: 45px;
+}
+.main-container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  background-color: $login-register-bg;
+}
+.img-container {
+  img {
+    width: 45vw;
+    height: 100vh;
+    object-fit: cover;
+  }
+}
+.form-container {
+  width: 55vw;
+  align-self: center;
+  text-align: center;
+}
+.logo-container {
+  padding: 0 70px;
+  margin-bottom: 55px;
+}
+.login-container {
+  margin: 0 auto;
+  width: calc(min(450px, 60vw));
+  height: calc(min(450px, 60vh));
+  background: $white-100;
+  box-shadow: 0px 3px 12px #1e36480a;
+  border-radius: 8px;
+}
+.login-text-container {
+  text-align: center;
+  margin-bottom: 50px;
+}
+.form-group {
+  width: 100%;
+  height: 100%;
+  padding: 70px 90px;
+  &:not(.login-text-container) {
+    text-align: left;
+  }
+}
+.mg {
+  margin: 10px 0;
+}
+.registerRedirect {
+  margin-top: 10px;
+  text-align: center;
+  #h2Redirect {
+    color: $blue-200;
+  }
+
+  h2 {
+    display: inline;
+  }
+}

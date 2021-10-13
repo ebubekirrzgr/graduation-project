@@ -1,4 +1,4 @@
-import './style/reset.css';
+import './style/custom.scss';
 
 import React from 'react';
 import { render } from 'react-dom';

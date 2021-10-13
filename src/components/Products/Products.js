@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import React from 'react';
 import { useDispatch } from 'react-redux';
 
 import WrapperProducts from './scProducts';
@@ -18,7 +19,20 @@ const Products = ({
   const dispatch = useDispatch();
 
   const clgProducts = () => {
-    dispatch(clgProducts({ id, brand, color }));
+    dispatch(
+      clgProducts({
+        id,
+        brand,
+        color,
+        owner,
+        category,
+        title,
+        imageUrl,
+        description,
+        isSold,
+        price,
+      })
+    );
   };
 
   return (
@@ -39,18 +53,23 @@ const Products = ({
     </WrapperProducts>
   );
 };
+const propShape = PropTypes.shape({
+  id: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+});
 
 Products.propTypes = {
-  id: PropTypes.string.isRequired,
-  brand: PropTypes.string.isRequired,
-  color: PropTypes.string.isRequired,
-  owner: PropTypes.string.isRequired,
-  category: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  imageUrl: PropTypes.string.isRequired,
+  brand: propShape.isRequired,
+  category: propShape.isRequired,
+  color: propShape.isRequired,
   description: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
+  imageUrl: PropTypes.string.isRequired,
+  status: propShape.isRequired,
   isSold: PropTypes.bool.isRequired,
+  owner: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
-};
+  title: PropTypes.string.isRequired,
+}.isRequired;
 
 export default Products;
