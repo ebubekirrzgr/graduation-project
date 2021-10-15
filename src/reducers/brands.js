@@ -1,7 +1,7 @@
 import BRANDS from 'constants/brands';
 
 const initialState = {
-  brandsData: {},
+  brandsData: [],
   isFetching: false,
   isError: false,
 };
@@ -9,7 +9,7 @@ const initialState = {
 const brandsReducer = (state = initialState, action) => {
   switch (action.type) {
     case BRANDS.FETCH_BRANDS_PENDING:
-      return { ...state, isfetching: true, brandsData: {}, isError: false };
+      return { ...state, isfetching: true, brandsData: [], isError: false };
     case BRANDS.FETCH_BRANDS_SUCCESS:
       return {
         ...state,
@@ -18,7 +18,7 @@ const brandsReducer = (state = initialState, action) => {
         isError: false,
       };
     case BRANDS.FETCH_BRANDS_ERROR:
-      return { ...state, isfetching: false, brandsData: {}, isError: true };
+      return { ...state, isfetching: false, brandsData: [], isError: true };
     default:
       return state;
   }

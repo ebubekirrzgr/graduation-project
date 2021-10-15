@@ -18,7 +18,7 @@ const fetchBrands = () => async (dispatch) => {
   dispatch(fetchPending());
   return fetch('http://bootcampapi.techcs.io/api/fe/v1/detail/brand/all')
     .then((response) => response.json())
-    .then((data) => dispatch(fetchSuccess(data.results)))
+    .then((data) => dispatch(fetchSuccess(data)))
     .catch((error) => dispatch(fetchError(error)));
 };
 

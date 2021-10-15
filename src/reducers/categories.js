@@ -1,7 +1,7 @@
 import CATEGORIES from 'constants/categories';
 
 const initialState = {
-  categoriesData: {},
+  categoriesData: [],
   isFetching: false,
   isError: false,
 };
@@ -9,16 +9,16 @@ const initialState = {
 const categoriesReducer = (state = initialState, action) => {
   switch (action.type) {
     case CATEGORIES.FETCH_CATEGORIES_PENDING:
-      return { ...state, isfetching: true, categoriesData: {}, isError: false };
+      return { ...state, isfetching: true, categoriesData: [], isError: false };
     case CATEGORIES.FETCH_CATEGORIES_SUCCESS:
       return {
         ...state,
         categoriesData: action.payload,
-        isfetching: false,
+        isFetching: false,
         isError: false,
       };
     case CATEGORIES.FETCH_CATEGORIES_ERROR:
-      return { ...state, isfetching: false, categoriesData: {}, isError: true };
+      return { ...state, isfetching: false, categoriesData: [], isError: true };
     default:
       return state;
   }
