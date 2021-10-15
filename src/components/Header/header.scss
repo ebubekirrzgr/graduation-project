@@ -1,7 +1,26 @@
 @import '../../style/variables';
 
-.headers {
+.header {
   height: 80px;
   background-color: $white-100;
   align-items: center;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 220px;
+  &__logo {
+    img {
+      width: 130px;
+    }
+  }
+  &__buttons {
+    width: 25%;
+    display: flex;
+  }
+  Button {
+    margin: 5px;
+    min-width: 80px;
+    img {
+      margin-right: 6px;
+    }
+  }
 }
