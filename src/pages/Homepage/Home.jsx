@@ -1,10 +1,13 @@
+import './home.scss';
+
 import fetchProducts from 'actions/products';
 import Header from 'components/Header';
-import Products from 'components/Products';
+import Navbar from 'components/Navbar/Navbar';
+import ProductsList from 'components/Products/ProductList';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import ProductList from './scHome';
+import Banner from '../../assets/images/Banner.png';
 
 const Home = () => {
   const { productsData, isError, isFetching } = useSelector(
@@ -29,16 +32,19 @@ const Home = () => {
   if (isFetching) return <h1>Loading </h1>;
   if (isError) return <h1>Fetching error </h1>;
 
-  const renderProductList = () =>
-    productsData.length > 0 &&
-    productsData.map((product) => <Products key={product.id} {...product} />);
-  console.log('productsData: ', productsData);
+  // const renderProductList = () =>
+  //   productsData.length > 0 &&
+  //   productsData.map((product) => <Products key={product.id} {...product} />);
+  // console.log('productsData: ', productsData);
 
   return (
     <>
       <Header />
-      <h1>Products</h1>
-      <ProductList>{renderProductList}</ProductList>
+      <div className="banner">
+        <img src={Banner} alt="banner" />
+      </div>
+      <Navbar />
+      <ProductsList />
     </>
   );
 };

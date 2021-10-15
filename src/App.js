@@ -1,26 +1,38 @@
 // import Register from './pages/Register';
 import ProductList from 'components/Products/ProductList';
 import React from 'react';
-import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
+import Home from './pages/Homepage';
 import Login from './pages/Login';
-
-// import Home from './pages/Homepage';
+import Register from './pages/Register';
 
 function App() {
   return (
     <div className="App">
       <Router>
-        <nav>
+        {/* <nav>
           <ul>
             <li>
               <Link to="/">Product List</Link>
             </li>
           </ul>
-        </nav>
+        </nav> */}
 
         <Switch>
           <Route exact path="/">
+            <Login />
+          </Route>
+          <Route exact path="/Home">
+            <Home />
+          </Route>
+          <Route exact path="/Login">
+            <Login />
+          </Route>
+          <Route exact path="/Register">
+            <Register />
+          </Route>
+          <Route exact path="/ProductList">
             <ProductList />
           </Route>
 
