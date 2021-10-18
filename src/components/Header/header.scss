@@ -8,6 +8,7 @@
   justify-content: space-between;
   padding: 0 220px;
   &__logo {
+    cursor: pointer;
     img {
       width: 130px;
     }
@@ -19,6 +20,7 @@
   Button {
     margin: 5px;
     min-width: 80px;
+    font-weight: bold;
     img {
       margin-right: 6px;
     }
