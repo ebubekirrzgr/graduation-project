@@ -16,7 +16,7 @@ export const fetchPending = () => ({
 
 const fetchProducts = () => async (dispatch) => {
   dispatch(fetchPending());
-  return fetch('http://bootcampapi.techcs.io/api/fe/v1/product/all')
+  return fetch('https://bootcampapi.techcs.io/api/fe/v1/product/all')
     .then((response) => response.json())
     .then((data) => dispatch(fetchSuccess(data)))
     .catch((error) => dispatch(fetchError(error)));

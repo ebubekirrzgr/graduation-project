@@ -16,7 +16,7 @@ const fetchPending = () => ({
 
 const fetchCategories = () => async (dispatch) => {
   dispatch(fetchPending());
-  return fetch('http://bootcampapi.techcs.io/api/fe/v1/detail/category/all')
+  return fetch('https://bootcampapi.techcs.io/api/fe/v1/detail/category/all')
     .then((response) => response.json())
     .then((data) => dispatch(fetchSuccess(data)))
     .catch((error) => dispatch(fetchError(error)));
