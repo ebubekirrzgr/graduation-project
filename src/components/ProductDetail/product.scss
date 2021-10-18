@@ -1,0 +1,91 @@
+@import '../../style/_variables';
+.product-details {
+  padding: 20px 220px;
+  height: 100%;
+}
+.product {
+  border-radius: 8px;
+
+  h1 {
+    font: normal normal normal 34px Nunito;
+    color: #555555;
+  }
+  h2 {
+    font: normal normal bold 25px Nunito;
+    color: #525252;
+  }
+  h5 {
+    font: normal normal bold 15px Nunito;
+    color: #525252;
+  }
+
+  display: flex;
+  background-color: $white-100;
+  text-transform: capitalize;
+  &__image {
+    max-width: 520px;
+    min-width: 250px;
+    width: 520px;
+    height: 100%;
+    position: relative;
+    display: flex;
+    padding: 16px 16px;
+    img {
+      width: 100%;
+      object-fit: contain;
+      border-radius: 8px;
+    }
+  }
+  &__title {
+    margin-bottom: 25px;
+  }
+  &__detail {
+    margin-top: 30px;
+    width: 480px;
+  }
+  &__offerButtons {
+    display: flex;
+    justify-content: space-between;
+    margin: 30px 0;
+  }
+  &__price {
+    margin-top: 30px;
+  }
+  &__desc {
+    margin-bottom: 10px;
+  }
+  &__description {
+    text-transform: initial;
+    text-align: left;
+  }
+  &__specification > div {
+    &:not(:last-child) {
+      margin-bottom: 10px;
+    }
+  }
+  &__specification > div {
+    span {
+      font: normal normal normal 15px Nunito;
+      color: #555555;
+    }
+    display: flex;
+    align-items: baseline;
+  }
+  &__specification {
+    div > h5 {
+      &:not(:last-child) {
+        width: 145px;
+      }
+    }
+  }
+  .product__description {
+    font: normal normal normal 15px Nunito;
+    letter-spacing: 0px;
+    color: #555555;
+  }
+}
+Button {
+  &:not(:last-child) {
+    margin-right: 10px;
+  }
+}
