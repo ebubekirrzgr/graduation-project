@@ -32,11 +32,6 @@ const Home = () => {
   if (isFetching) return <h1>Loading </h1>;
   if (isError) return <h1>Fetching error </h1>;
 
-  // const renderProductList = () =>
-  //   productsData.length > 0 &&
-  //   productsData.map((product) => <Products key={product.id} {...product} />);
-  // console.log('productsData: ', productsData);
-
   return (
     <>
       <Header />

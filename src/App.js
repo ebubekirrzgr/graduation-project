@@ -1,10 +1,10 @@
 // import Register from './pages/Register';
-import ProductList from 'components/Products/ProductList';
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
-import Home from './pages/Homepage';
+import Home from './pages/Home';
 import Login from './pages/Login';
+import ProductDetails from './pages/Product-Details';
 import Register from './pages/Register';
 
 function App() {
@@ -32,12 +32,8 @@ function App() {
           <Route exact path="/Register">
             <Register />
           </Route>
-          <Route exact path="/ProductList">
-            <ProductList />
-          </Route>
-
-          <Route path="/product/:id">
-            <Login />
+          <Route exact path="/ProductDetails/:id">
+            <ProductDetails />
           </Route>
         </Switch>
       </Router>
