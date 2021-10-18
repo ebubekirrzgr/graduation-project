@@ -19,7 +19,7 @@ h3 {
   margin-bottom: 10px;
   text-align: right;
 }
-input {
+.defaultInput {
   border: none;
   background-color: $gray-100;
   border-radius: 8px;
@@ -34,6 +34,24 @@ input {
   &:focus {
     border: 1px solid $blue-200;
     background-color: $blue-100;
+  }
+}
+.errorInput {
+  border: none;
+  background-color: $red-100;
+  border: 1px solid $red;
+  border-radius: 8px;
+  font-size: 16px;
+  margin-bottom: 10px;
+  width: 100%;
+  height: 45px;
+  outline: none;
+  padding: 8px;
+
+  &:active,
+  &:focus {
+    border: 1px solid $red;
+    background-color: $red-100;
   }
 }
 button {
