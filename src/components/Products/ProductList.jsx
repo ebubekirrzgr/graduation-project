@@ -24,7 +24,7 @@ const ProductsList = () => {
       <div className="product-list">
         {products.productsData.length > 0 &&
           products.productsData.map((item) => (
-            <Link to={`/product/${item.id}`}>
+            <Link to={`/ProductDetails/${item.id}`}>
               <div className="productList" key={item.id}>
                 <div className="productImg">
                   <img src={item.imageUrl} alt={item.title} />
@@ -36,7 +36,15 @@ const ProductsList = () => {
                     <h6 className="hColor">{item.color.title}</h6>
                   </h5>
                 </div>
-                <h5 className="productPrice">{item.price} TL</h5>
+                <h5 className="productPrice">
+                  {item.price
+                    .toLocaleString('tr-TR', {
+                      style: 'currency',
+                      currency: 'TRY',
+                    })
+                    .slice(1)}{' '}
+                  TL
+                </h5>
               </div>
             </Link>
           ))}
