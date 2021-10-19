@@ -1,7 +1,9 @@
 /* eslint-disable react/prop-types */
 import './register.scss';
 
+import { registerAction } from 'actions/register';
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import RegisterModel from '../../assets/images/model.png';
@@ -10,8 +12,9 @@ import useForm from '../../useForm';
 import validate from '../../validateInfo';
 
 const Register = () => {
-  const submitForm = () => {
-    console.log('sa');
+  const dispatch = useDispatch();
+  const submitForm = (data) => {
+    dispatch(registerAction(data));
   };
   const { handleChange, values, handleSubmit, errors } = useForm(
     submitForm,
@@ -54,7 +57,9 @@ const Register = () => {
                 className={errors.password ? 'errorInput' : 'defaultInput'}
               />
             </div>
-            <button type="submit">Üye Ol</button>
+            <button onClick={handleSubmit} type="submit">
+              Üye Ol
+            </button>
             <div className="registerRedirect">
               <h2 className="mg ">
                 Hesabın var mı?{' '}

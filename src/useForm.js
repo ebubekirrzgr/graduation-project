@@ -13,6 +13,7 @@ const useForm = (submitForm, validate) => {
       ...values,
       [name]: value,
     });
+    setIsSubmitting(false);
   };
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -22,10 +23,10 @@ const useForm = (submitForm, validate) => {
   };
 
   useEffect(() => {
-    if (Object.keys(errors).length === 0 && !isSubmitting) {
-      submitForm();
+    if (Object.keys(errors).length === 0 && isSubmitting) {
+      submitForm(values);
     }
-  }, [submitForm, errors, isSubmitting]);
+  }, [submitForm, errors, isSubmitting, values]);
 
   return { handleChange, values, handleSubmit, errors };
 };

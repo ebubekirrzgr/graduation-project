@@ -1,7 +1,9 @@
 import './login.scss';
 
-import React from 'react';
-import { Link } from 'react-router-dom';
+import { loginAction } from 'actions/login';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link, useHistory } from 'react-router-dom';
 
 import LoginModel from '../../assets/images/model.png';
 import Logo from '../../assets/svg/logo.svg';
@@ -9,13 +11,21 @@ import useForm from '../../useForm';
 import validate from '../../validateInfo';
 
 const Login = () => {
-  const submitForm = () => {
-    console.log('sa');
+  const dispatch = useDispatch();
+  const history = useHistory();
+  const loginData = useSelector((state) => state.login.loginData);
+  const submitForm = (data) => {
+    dispatch(loginAction(data));
   };
   const { handleChange, values, handleSubmit, errors } = useForm(
     submitForm,
     validate
   );
+  useEffect(() => {
+    if (localStorage.getItem('token')) {
+      history.push('/Home');
+    }
+  }, [history, loginData]);
   return (
     <div className="main-container">
       <div className="img-container">
@@ -54,7 +64,9 @@ const Login = () => {
               />
               <h3>Şifremi Unuttum</h3>
             </div>
-            <button type="submit">Giriş</button>
+            <button onClick={handleSubmit} type="submit">
+              Giriş
+            </button>
             <div className="registerRedirect">
               <h2 className="mg ">
                 Hesabın yok mu?{' '}
