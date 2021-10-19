@@ -8,12 +8,14 @@ import { useParams } from 'react-router';
 import fetchProductDetails from '../../actions/productDetail';
 import Button from '../Button/Button';
 import ConfirmModal from '../Modals/ConfirmModal/confirmModal';
+import OfferModal from '../Modals/OfferModal/offerModal';
 
 const ProductDetail = () => {
   const productDetail = useSelector((state) => state.productDetail);
   const dispatch = useDispatch();
   const { id } = useParams();
   const [openConfirmModal, setConfirmModal] = useState(false);
+  const [openOfferModal, setOfferModal] = useState(false);
 
   useEffect(() => {
     dispatch(fetchProductDetails(id));
@@ -62,28 +64,63 @@ const ProductDetail = () => {
               </span>{' '}
               TL
             </h2>
-            <div className="product__offerButtons">
+            <div
+              className={
+                productDetail.productDetailData.isSold
+                  ? 'isSoldButton buttonDisplayBlock'
+                  : 'buttonDisplayNone'
+              }
+            >
               <Button
                 type="submit"
-                theme="primary"
+                theme="warning"
                 size="large"
                 className="confirmModalBtn"
-                onClick={() => {
-                  setConfirmModal(true);
-                }}
               >
-                Satın Al
-              </Button>
-              <Button
-                type="submit"
-                theme="secondary"
-                size="large"
-                className="styledButton"
-              >
-                Teklif Ver
+                Bu Ürün Satışta Değil
               </Button>
             </div>
+            {/*  I control the sales status here */}
+            {!productDetail.productDetailData.isSold && (
+              <div className="product__offerButtons">
+                <Button
+                  type="submit"
+                  theme="primary"
+                  size="large"
+                  className="confirmModalBtn"
+                  onClick={() => {
+                    setConfirmModal(true);
+                  }}
+                >
+                  Satın Al
+                </Button>
+                <Button
+                  type="submit"
+                  theme="secondary"
+                  size="large"
+                  className="offerModalBtn"
+                  onClick={() => {
+                    setOfferModal(true);
+                  }}
+                >
+                  Teklif Ver
+                </Button>
+              </div>
+            )}
             {openConfirmModal && <ConfirmModal closeModal={setConfirmModal} />}
+            {openOfferModal && (
+              <OfferModal
+                closeModal={setOfferModal}
+                img={productDetail.productDetailData.imageUrl}
+                title={productDetail.productDetailData.brand.title}
+                price={productDetail.productDetailData.price
+                  .toLocaleString('tr-TR', {
+                    style: 'currency',
+                    currency: 'TRY',
+                  })
+                  .slice(1)}
+              />
+            )}
             <h4 className="product__desc">Açıklama</h4>
             <span className="product__description">
               {productDetail.productDetailData.description}
