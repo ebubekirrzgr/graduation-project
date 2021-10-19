@@ -16,13 +16,14 @@ const Navbar = () => {
 
   if (categories.isFetching) return <div>Loading</div>;
   if (categories.isError) return <div>Error</div>;
-  console.log(categories.categoriesData);
   return (
     <nav>
       <ul>
         <li>Hepsi</li>
         {categories.categoriesData.length > 0 &&
-          categories.categoriesData.map((item) => <li>{item.title}</li>)}
+          categories.categoriesData.map((item) => (
+            <li key={item.id}>{item.title}</li>
+          ))}
       </ul>
     </nav>
   );

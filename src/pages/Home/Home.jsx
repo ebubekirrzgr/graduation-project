@@ -10,9 +10,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Banner from '../../assets/images/Banner.png';
 
 const Home = () => {
-  const { productsData, isError, isFetching } = useSelector(
-    (state) => state.products
-  );
+  const { isError, isFetching } = useSelector((state) => state.products);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -26,8 +24,6 @@ const Home = () => {
       mounted = false;
     };
   }, [dispatch]);
-
-  console.log('productsData: ', productsData);
 
   if (isFetching) return <h1>Loading </h1>;
   if (isError) return <h1>Fetching error </h1>;

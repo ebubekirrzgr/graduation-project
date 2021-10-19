@@ -24,8 +24,8 @@ const ProductsList = () => {
       <div className="product-list">
         {products.productsData.length > 0 &&
           products.productsData.map((item) => (
-            <Link to={`/ProductDetails/${item.id}`}>
-              <div className="productList" key={item.id}>
+            <Link to={`/ProductDetails/${item.id}`} key={item.id}>
+              <div className="productList">
                 <div className="productImg">
                   <img src={item.imageUrl} alt={item.title} />
                 </div>
@@ -33,7 +33,7 @@ const ProductsList = () => {
                   <h5 className="productBrand">{item.brand.title}</h5>
                   <h5 className="productColor">
                     Renk:
-                    <h6 className="hColor">{item.color.title}</h6>
+                    <span className="hColor">{item.color.title}</span>
                   </h5>
                 </div>
                 <h5 className="productPrice">
