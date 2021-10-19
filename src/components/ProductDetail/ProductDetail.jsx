@@ -1,18 +1,19 @@
 /* eslint-disable no-debugger */
 import './product.scss';
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router';
 
 import fetchProductDetails from '../../actions/productDetail';
 import Button from '../Button/Button';
+import ConfirmModal from '../Modals/ConfirmModal/confirmModal';
 
 const ProductDetail = () => {
   const productDetail = useSelector((state) => state.productDetail);
   const dispatch = useDispatch();
-
   const { id } = useParams();
+  const [openConfirmModal, setConfirmModal] = useState(false);
 
   useEffect(() => {
     dispatch(fetchProductDetails(id));
@@ -66,7 +67,10 @@ const ProductDetail = () => {
                 type="submit"
                 theme="primary"
                 size="large"
-                className="styledButton"
+                className="confirmModalBtn"
+                onClick={() => {
+                  setConfirmModal(true);
+                }}
               >
                 Satın Al
               </Button>
@@ -79,6 +83,7 @@ const ProductDetail = () => {
                 Teklif Ver
               </Button>
             </div>
+            {openConfirmModal && <ConfirmModal closeModal={setConfirmModal} />}
             <h4 className="product__desc">Açıklama</h4>
             <span className="product__description">
               {productDetail.productDetailData.description}

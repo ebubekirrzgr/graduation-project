@@ -1,0 +1,51 @@
+@import '../../../style/variables';
+.confirmModal {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(75, 156, 226, 0.7);
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  z-index: 999;
+}
+.modalContainer {
+  width: 355px;
+  height: 171px;
+  display: flex;
+  flex-direction: column;
+  padding: 8px;
+  background-color: $white-100;
+  border-radius: 8px;
+
+  .title {
+    display: inline-block;
+    text-align: center;
+    margin-top: 20px;
+    h1 {
+      color: #525252;
+      font: normal normal bold 25px Nunito;
+    }
+  }
+  .body {
+    text-align: center;
+    > h2 {
+      font: normal normal normal 15px Nunito;
+      color: #555555;
+      margin: 0;
+    }
+  }
+  .confirmModalButtons {
+    display: flex;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    Button {
+      font: normal normal bold 18px Nunito;
+    }
+  }
+}
