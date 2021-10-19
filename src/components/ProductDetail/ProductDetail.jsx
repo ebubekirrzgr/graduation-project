@@ -107,18 +107,18 @@ const ProductDetail = () => {
                 </Button>
               </div>
             )}
-            {openConfirmModal && <ConfirmModal closeModal={setConfirmModal} />}
+            {openConfirmModal && (
+              <ConfirmModal
+                closeModal={setConfirmModal}
+                id={productDetail.productDetailData.id}
+              />
+            )}
             {openOfferModal && (
               <OfferModal
                 closeModal={setOfferModal}
                 img={productDetail.productDetailData.imageUrl}
                 title={productDetail.productDetailData.brand.title}
-                price={productDetail.productDetailData.price
-                  .toLocaleString('tr-TR', {
-                    style: 'currency',
-                    currency: 'TRY',
-                  })
-                  .slice(1)}
+                price={productDetail.productDetailData.price}
               />
             )}
             <h4 className="product__desc">Açıklama</h4>

@@ -1,0 +1,116 @@
+@import '../../../style/variables';
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type='number'] {
+  -moz-appearance: textfield;
+}
+.offerModal {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(75, 156, 226, 0.7);
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+.offerModalContainer {
+  width: 480px;
+  height: 480px;
+  display: flex;
+  flex-direction: column;
+  padding: 8px;
+  background-color: $white-100;
+  border-radius: 8px;
+  padding: 20px;
+  .title {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    text-align: center;
+    flex-direction: row;
+    margin-bottom: 17px;
+    img {
+      cursor: pointer;
+    }
+    h1 {
+      margin-bottom: 0;
+      font: normal normal bold 25px Nunito;
+    }
+  }
+  .body {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    background-color: $blue-100;
+    border-radius: 8px;
+    padding: 6px 6px 0 4px;
+    .productImg {
+      display: flex;
+      flex-direction: row;
+      h3 {
+        font: normal normal normal 13px Nunito;
+        color: #555555;
+      }
+      img {
+        margin-right: 7px;
+        width: 50px;
+        height: 50px;
+      }
+    }
+  }
+  .offers {
+    cursor: pointer;
+    img {
+      margin-right: 5px;
+    }
+    div {
+      display: flex;
+      padding: 8px;
+      border-radius: 8px;
+      border: 1px solid #e0e0e0;
+      margin-bottom: 15px;
+      font: normal normal normal 15px Nunito;
+      color: #525252;
+      text-transform: initial;
+      padding: 13px 0 12px 10px;
+      align-items: center;
+    }
+  }
+  .customOffer {
+    display: flex;
+    margin-bottom: 20px;
+    input {
+      width: 100%;
+      border-radius: 8px;
+      padding: 15px 0 11px 15px;
+      background: #f4f4f4;
+      border: none;
+      outline: none;
+      font: normal normal normal 16px Nunito;
+    }
+  }
+  Button {
+    cursor: pointer;
+    width: 65%;
+  }
+  .offerModalButton {
+    display: flex;
+    justify-content: center;
+  }
+}
+.checked {
+  border: 1px solid $blue-200 !important;
+  background-color: $blue-100;
+  color: $blue-200 !important;
+}

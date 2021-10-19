@@ -5,6 +5,7 @@ import categoriesReducer from './categories';
 import LoginReducer from './login';
 import ProductDetailReducer from './productDetail';
 import ProductsReducer from './products';
+import PurchaseReducer from './purchase';
 import RegisterReducer from './register';
 
 export default combineReducers({
@@ -14,4 +15,5 @@ export default combineReducers({
   productDetail: ProductDetailReducer,
   register: RegisterReducer,
   login: LoginReducer,
+  purchase: PurchaseReducer,
 });

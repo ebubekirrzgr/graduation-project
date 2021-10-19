@@ -1,13 +1,17 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import './confirmModal.scss';
 
+import fetchPurchase from 'actions/purchaseProduct';
 import React from 'react';
+import { useDispatch } from 'react-redux';
 
 import Button from '../../Button/Button';
 
-function confirmModal({ closeModal }) {
+function confirmModal({ closeModal, id }) {
+  const dispatch = useDispatch();
   return (
     <div className="confirmModal">
-      <div className="modalContainer">
+      <div className="confirmModalContainer">
         <div className="title">
           <h1>Satın Al</h1>
         </div>
@@ -29,6 +33,10 @@ function confirmModal({ closeModal }) {
             theme="primary"
             size="large"
             className="styledButton"
+            onClick={() => {
+              closeModal(false);
+              dispatch(fetchPurchase(id));
+            }}
           >
             Satın Al
           </Button>

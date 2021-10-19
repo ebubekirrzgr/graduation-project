@@ -9,6 +9,10 @@ const theme = {
     bgcolor: '#F0F8FF',
     font: '#4B9CE2',
   },
+  warning: {
+    bgcolor: '#FFF0E2',
+    font: '#FAAD60',
+  },
 };
 
 const size = {
