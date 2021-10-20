@@ -16,7 +16,7 @@ const ProductDetail = () => {
   const { id } = useParams();
   const [openConfirmModal, setConfirmModal] = useState(false);
   const [openOfferModal, setOfferModal] = useState(false);
-
+  console.log('id :>> ', id);
   useEffect(() => {
     dispatch(fetchProductDetails(id));
   }, [dispatch, id]);

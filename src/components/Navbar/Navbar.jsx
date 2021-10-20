@@ -3,6 +3,7 @@ import './navbar.scss';
 import fetchCategories from 'actions/categories';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   const categories = useSelector((state) => state.categories);
@@ -19,10 +20,20 @@ const Navbar = () => {
   return (
     <nav>
       <ul>
-        <li>Hepsi</li>
+        <Link to="/Home">
+          <li>Hepsi</li>
+        </Link>
         {categories.categoriesData.length > 0 &&
           categories.categoriesData.map((item) => (
-            <li key={item.id}>{item.title}</li>
+            <Link
+              to={{
+                pathname: `/Home`,
+                search: `?sort=${item.title}`,
+              }}
+              key={item.id}
+            >
+              <li key={item.id}>{item.title}</li>
+            </Link>
           ))}
       </ul>
     </nav>
