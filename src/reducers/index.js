@@ -3,6 +3,7 @@ import { combineReducers } from 'redux';
 import BrandsReducer from './brands';
 import categoriesReducer from './categories';
 import LoginReducer from './login';
+import OfferReducer from './offer';
 import ProductDetailReducer from './productDetail';
 import ProductsReducer from './products';
 import PurchaseReducer from './purchase';
@@ -16,4 +17,5 @@ export default combineReducers({
   register: RegisterReducer,
   login: LoginReducer,
   purchase: PurchaseReducer,
+  offer: OfferReducer,
 });

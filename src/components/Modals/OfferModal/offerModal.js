@@ -2,19 +2,22 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import './offerModal.scss';
 
+import postOffer from 'actions/offer';
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 
 import checked from '../../../assets/svg/checked.svg';
 import closeSvg from '../../../assets/svg/close.svg';
 import unchecked from '../../../assets/svg/unchecked.svg';
 import Button from '../../Button/Button';
 
-function confirmModal({ closeModal, img, price, title }) {
+function confirmModal({ closeModal, img, price, title, offerId }) {
   const [selected, setSelected] = useState(0);
-  const [customPrice, setCustomPrice] = useState({ offeredPrice: 0 });
+  const dispatch = useDispatch();
+  const [obj, setObj] = useState({ offeredPrice: 0 });
   const offerCalculator = (percent) => {
-    setCustomPrice({
-      ...customPrice,
+    setObj({
+      ...obj,
       offeredPrice: (percent * Number(price)) / 100,
     });
   };
@@ -99,10 +102,10 @@ function confirmModal({ closeModal, img, price, title }) {
         <div className="customOffer">
           <input
             onClick={() => setSelected('')}
-            onChange={(e) =>
-              setCustomPrice({ ...customPrice, offeredPrice: e.target.value })
-            }
-            value={customPrice.offeredPrice > 0 ? customPrice.offeredPrice : ''}
+            onChange={(e) => {
+              setObj({ ...obj, offeredPrice: Number(e.target.value) });
+            }}
+            value={obj.offeredPrice > 0 ? obj.offeredPrice : ''}
             placeholder="Teklif Belirle"
             type="number"
           />
@@ -113,6 +116,10 @@ function confirmModal({ closeModal, img, price, title }) {
             theme="primary"
             size="large"
             className="confirmButton"
+            onClick={() => {
+              dispatch(postOffer(offerId, obj));
+              closeModal(false);
+            }}
           >
             Onayla
           </Button>

@@ -71,7 +71,7 @@ const Login = () => {
               <h2 className="mg ">
                 Hesabın yok mu?{' '}
                 <span id="h2Redirect">
-                  <Link to="/Register">Giriş Yap </Link>
+                  <Link to="/Register">Üye Ol</Link>
                 </span>
               </h2>
             </div>

@@ -119,6 +119,7 @@ const ProductDetail = () => {
                 img={productDetail.productDetailData.imageUrl}
                 title={productDetail.productDetailData.brand.title}
                 price={productDetail.productDetailData.price}
+                offerId={productDetail.productDetailData.id}
               />
             )}
             <h4 className="product__desc">Açıklama</h4>

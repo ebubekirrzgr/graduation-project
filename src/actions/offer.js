@@ -1,28 +1,28 @@
 import axios from 'axios';
-import PURCHASE from 'constants/purchase';
+import OFFER from 'constants/offer';
 
 import fetchProductDetail from './productDetail';
 
 const fetchSuccess = (data) => ({
-  type: PURCHASE.FETCH_PURCHASE_SUCCESS,
+  type: OFFER.FETCH_OFFER_SUCCESS,
   payload: data,
 });
 
 const fetchError = (error) => ({
-  type: PURCHASE.FETCH_PURCHASE_ERROR,
+  type: OFFER.FETCH_OFFER_ERROR,
   payload: error,
 });
 
 const fetchPending = () => ({
-  type: PURCHASE.FETCH_PURCHASE_PENDING,
+  type: OFFER.FETCH_OFFER_PENDING,
 });
 
-const fetchPurchase = (productId) => async (dispatch) => {
+const postOffer = (offerId, obj) => async (dispatch) => {
   dispatch(fetchPending());
   return axios
-    .put(
-      `https://bootcampapi.techcs.io/api/fe/v1/product/purchase/${productId}`,
-      null,
+    .post(
+      `https://bootcampapi.techcs.io/api/fe/v1/product/offer/${offerId}`,
+      obj,
       {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`,
@@ -31,7 +31,7 @@ const fetchPurchase = (productId) => async (dispatch) => {
     )
     .then((data) => dispatch(fetchSuccess(data)))
     .catch((error) => dispatch(fetchError(error)))
-    .then(() => dispatch(fetchProductDetail(productId)));
+    .then(() => dispatch(fetchProductDetail(offerId)));
 };
 
-export default fetchPurchase;
+export default postOffer;
