@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router';
 
 import fetchProductDetails from '../../actions/productDetail';
+import spinner from '../../assets/loading.gif';
 import Button from '../Button/Button';
 import ConfirmModal from '../Modals/ConfirmModal/confirmModal';
 import OfferModal from '../Modals/OfferModal/offerModal';
@@ -16,13 +17,16 @@ const ProductDetail = () => {
   const { id } = useParams();
   const [openConfirmModal, setConfirmModal] = useState(false);
   const [openOfferModal, setOfferModal] = useState(false);
-  console.log('id :>> ', id);
   useEffect(() => {
     dispatch(fetchProductDetails(id));
   }, [dispatch, id]);
 
   if (productDetail.isFetching && !productDetail.productDetailData.id)
-    return <div>Loading</div>;
+    return (
+      <div className="spinner">
+        <img src={spinner} alt="" />
+      </div>
+    );
   if (productDetail.isError)
     return <div>{productDetail.productDetailData.error}</div>;
   return (
@@ -68,7 +72,7 @@ const ProductDetail = () => {
               className={
                 productDetail.productDetailData.isSold
                   ? 'isSoldButton buttonDisplayBlock'
-                  : 'buttonDisplayNone'
+                  : 'isSoldButton buttonDisplayNone'
               }
             >
               <Button

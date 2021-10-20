@@ -8,6 +8,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import Banner from '../../assets/images/Banner.png';
+import spinner from '../../assets/loading.gif';
 
 const Home = () => {
   const { isError, isFetching } = useSelector((state) => state.products);
@@ -25,7 +26,12 @@ const Home = () => {
     };
   }, [dispatch]);
 
-  if (isFetching) return <h1>Loading </h1>;
+  if (isFetching)
+    return (
+      <div className="spinner">
+        <img src={spinner} alt="" />
+      </div>
+    );
   if (isError) return <h1>Fetching error </h1>;
 
   return (
