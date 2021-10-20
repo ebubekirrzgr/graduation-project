@@ -13,6 +13,14 @@ const theme = {
     bgcolor: '#FFF0E2',
     font: '#FAAD60',
   },
+  reject: {
+    bgcolor: '#F77474',
+    font: '#F0F8FF',
+  },
+  offer: {
+    bgcolor: '#F2F2F2',
+    font: '#B1B1B1',
+  },
 };
 
 const size = {

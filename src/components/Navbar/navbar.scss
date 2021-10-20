@@ -1,11 +1,22 @@
 @import '../../style/variables';
 
 nav {
-  margin: 30px 220px;
-  border-bottom: 2px solid #e0e0e0;
   cursor: pointer;
   width: 100%;
   overflow: auto hidden;
+  min-height: 40px;
+  position: relative;
+  &:before {
+    position: absolute;
+    content: '';
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 2px;
+    width: 100%;
+    background-color: #e0e0e0;
+    z-index: 1;
+  }
 
   ul {
     display: flex;
@@ -37,12 +48,13 @@ nav {
     height: 2px;
     background: transparent;
     transition: all 350ms ease-in-out;
+    z-index: 999;
   }
 
   li:hover::before {
     background: $blue-200;
     color: $blue-200;
-    transform: translateY(-16px);
+    transform: translateY(-6px);
   }
 
   li:active,

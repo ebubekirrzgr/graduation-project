@@ -72,7 +72,7 @@ const ProductDetail = () => {
               className={
                 productDetail.productDetailData.isSold
                   ? 'isSoldButton buttonDisplayBlock'
-                  : 'isSoldButton buttonDisplayNone'
+                  : 'buttonDisplayNone'
               }
             >
               <Button

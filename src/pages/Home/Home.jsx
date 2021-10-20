@@ -29,7 +29,7 @@ const Home = () => {
   if (isFetching)
     return (
       <div className="spinner">
-        <img src={spinner} alt="" />
+        <img src={spinner} alt="spinner" />
       </div>
     );
   if (isError) return <h1>Fetching error </h1>;
@@ -40,7 +40,9 @@ const Home = () => {
       <div className="banner">
         <img src={Banner} alt="banner" />
       </div>
-      <Navbar />
+      <div className="nav">
+        <Navbar />
+      </div>
       <ProductsList />
     </>
   );

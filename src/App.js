@@ -2,6 +2,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
+import Account from './pages/Account';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import ProductDetails from './pages/Product-Details';
@@ -11,14 +12,6 @@ function App() {
   return (
     <div className="App">
       <Router>
-        {/* <nav>
-          <ul>
-            <li>
-              <Link to="/">Product List</Link>
-            </li>
-          </ul>
-        </nav> */}
-
         <Switch>
           <Route exact path="/">
             <Login />
@@ -34,6 +27,12 @@ function App() {
           </Route>
           <Route exact path="/ProductDetails/:id">
             <ProductDetails />
+          </Route>
+          <Route exact path="/Account">
+            <Account />
+          </Route>
+          <Route exact path="/*">
+            <Home />
           </Route>
         </Switch>
       </Router>
