@@ -25,7 +25,7 @@ const ProductsList = () => {
   if (products.isError) return <div>Error</div>;
 
   return (
-    <div>
+    <div className="container">
       <div className="product-list">
         {products.productsData.length > 0 &&
           products.productsData

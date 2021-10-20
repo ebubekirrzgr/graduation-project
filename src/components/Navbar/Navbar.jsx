@@ -18,7 +18,7 @@ const Navbar = () => {
   if (categories.isFetching) return <div>Loading</div>;
   if (categories.isError) return <div>Error</div>;
   return (
-    <nav>
+    <nav className="container">
       <ul>
         <Link to="/Home">
           <li>Hepsi</li>

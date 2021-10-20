@@ -3,13 +3,15 @@
 nav {
   margin: 30px 220px;
   border-bottom: 2px solid #e0e0e0;
-  width: max-content;
-  width: 1480px;
   cursor: pointer;
+  width: 100%;
+  overflow: auto hidden;
+
   ul {
     display: flex;
     justify-content: space-between;
     list-style: none;
+    width: 100%;
   }
 
   li {

@@ -6,23 +6,38 @@
   align-items: center;
   display: flex;
   justify-content: space-between;
-  padding: 0 220px;
+  padding: 0 11%;
+  width: 100vw;
+
+  .container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin: 0;
+  }
+
   &__logo {
     cursor: pointer;
     img {
       width: 130px;
     }
   }
+
   &__buttons {
-    width: 25%;
     display: flex;
   }
-  Button {
+
+  button {
     margin: 5px;
-    min-width: 80px;
+    min-width: 100px;
     font-weight: bold;
+
     img {
       margin-right: 6px;
+    }
+
+    &:last-child {
+      margin-right: 0;
     }
   }
 }

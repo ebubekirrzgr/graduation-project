@@ -1,24 +1,27 @@
 @import '../../style/variables';
 
-h1 {
-  font-size: calc(clamp(20px, 3.5vw, 32px));
-  font-weight: bold;
-  color: $gray-300;
-  margin-bottom: 10px;
+.main-container {
+  h1 {
+    font-size: calc(clamp(20px, 3.5vw, 32px));
+    font-weight: bold;
+    color: $gray-300;
+    margin-bottom: 10px;
+  }
+  h2 {
+    font-size: 15px;
+    font-weight: regular;
+    color: $gray-300;
+    margin-bottom: 10px;
+  }
+  h3 {
+    font-size: 12px;
+    font-weight: regular;
+    color: $gray-200;
+    margin-bottom: 10px;
+    text-align: right;
+  }
 }
-h2 {
-  font-size: 15px;
-  font-weight: regular;
-  color: $gray-300;
-  margin-bottom: 10px;
-}
-h3 {
-  font-size: 12px;
-  font-weight: regular;
-  color: $gray-200;
-  margin-bottom: 10px;
-  text-align: right;
-}
+
 .defaultInput {
   border: none;
   background-color: $gray-100;
