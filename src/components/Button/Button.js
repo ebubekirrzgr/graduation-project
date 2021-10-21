@@ -39,6 +39,7 @@ const StyledButton = styled.button`
   background-color: ${(props) => theme[props.theme].bgcolor};
   color: ${(props) => theme[props.theme].font};
   font-size: ${(props) => size[props.size].fontSize};
+  cursor: pointer;
 `;
 StyledButton.defaultProps = {
   theme: 'primary',

@@ -2,6 +2,12 @@
 .product-details {
   padding: 20px 220px;
   height: 100%;
+  Button {
+    cursor: pointer;
+    &:not(:last-child) {
+      margin-right: 10px;
+    }
+  }
 }
 .product {
   border-radius: 8px;
@@ -85,12 +91,7 @@
     color: #555555;
   }
 }
-Button {
-  cursor: pointer;
-  &:not(:last-child) {
-    margin-right: 10px;
-  }
-}
+
 .buttonDisplayBlock {
   display: block;
 }

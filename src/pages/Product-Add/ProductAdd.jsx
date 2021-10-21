@@ -2,6 +2,7 @@ import './productAdd.scss';
 
 import Header from 'components/Header';
 import ProductAddForm from 'components/ProductAddForm';
+import UploadImage from 'components/UploadImage';
 import React from 'react';
 
 const ProductAdd = () => {
@@ -12,6 +13,7 @@ const ProductAdd = () => {
       <div className="container">
         <div className="productAdd">
           <ProductAddForm />
+          <UploadImage />
         </div>
       </div>
     </>
