@@ -1,11 +1,11 @@
 import './offers.scss';
 
 import fetchGivenOffers from 'actions/givenOffers';
+import fetchPurchase from 'actions/purchaseProduct';
 import fetchReceivedOffers from 'actions/receivedOffers';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import product from '../../assets/images/offerModel.png';
 import Button from '../Button/Button';
 
 const Offers = () => {
@@ -76,16 +76,43 @@ const Offers = () => {
           renderList.map((item) => (
             <div className="offersProducts" key={item.id}>
               <div className="offerProductDetail">
-                <img src={product} alt="product" />
+                <img src={item.product.imageUrl} alt="product" />
                 <div className="offerDetail">
                   <h2>{item.product.title}</h2>
                   <div className="receivedOffer">
-                    <h2 className="staticFont">Alınan Teklif:</h2>
-                    <h2 className="dynamicFont">{item.offeredPrice} TL</h2>
+                    <div
+                      className={
+                        offerState ? 'givenH' : 'receivedH displayNone'
+                      }
+                    >
+                      <h2 className="staticFont">Alınan Teklif:</h2>
+                    </div>
+                    <div
+                      className={
+                        !offerState ? 'receivedH' : 'givenH displayNone'
+                      }
+                    >
+                      <h2 className="staticFont">Verilen Teklif:</h2>
+                    </div>
+                    <h2 className="dynamicFont">
+                      {item.offeredPrice
+                        .toLocaleString('tr-TR', {
+                          style: 'currency',
+                          currency: 'TRY',
+                        })
+                        .slice(1)}{' '}
+                      TL
+                    </h2>
                   </div>
                 </div>
               </div>
-              <div className="offerButtons">
+              <div
+                className={
+                  !item.isSold && offerState && item.status === 'offered'
+                    ? 'offerButtons displayBlock'
+                    : 'displayNone'
+                }
+              >
                 <Button
                   type="submit"
                   theme="primary"
@@ -102,6 +129,78 @@ const Offers = () => {
                 >
                   Reddet
                 </Button>
+              </div>
+              <div
+                className={
+                  !item.isSold && item.status === 'rejected'
+                    ? 'rejectOffer displayBlock'
+                    : 'displayNone'
+                }
+              >
+                <p>Reddedildi</p>
+              </div>
+              <div
+                className={
+                  item.isSold && item.status === 'offered' && offerState
+                    ? 'rejectOffer displayBlock'
+                    : 'displayNone'
+                }
+              >
+                <p>Reddedildi</p>
+              </div>
+              <div
+                className={
+                  item.status === 'accepted offered' && !offerState
+                    ? 'acceptOffer displayBlock'
+                    : 'displayNone'
+                }
+              >
+                <Button
+                  type="submit"
+                  theme="primary"
+                  size="medium"
+                  className="styledButton"
+                  onClick={() => dispatch(fetchPurchase(item.product.id))}
+                >
+                  Satın Al
+                </Button>
+                <p>Onaylandı</p>
+              </div>
+              <div
+                className={
+                  item.isSold && item.status && !offerState
+                    ? 'soldOffer displayBlock'
+                    : 'displayNone'
+                }
+              >
+                <p>Satın Alındı</p>
+              </div>
+              <div
+                className={
+                  item.isSold && item.status === 'accepted' && offerState
+                    ? 'soldOffer displayBlock'
+                    : 'displayNone'
+                }
+              >
+                <p>Satıldı</p>
+              </div>
+              <div
+                className={
+                  !item.isSold && item.status === 'offered' && !offerState
+                    ? 'waitingOffer displayBlock'
+                    : 'displayNone'
+                }
+              >
+                <p>Cevap Bekleniyor</p>
+              </div>
+              <div
+                className={
+                  !item.isSold && item.status === 'accepted' && offerState
+                    ? 'acceptOffer displayBlock'
+                    : 'displayNone'
+                }
+              >
+                <p>Onaylandı</p>
               </div>
             </div>
           ))}

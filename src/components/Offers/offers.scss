@@ -99,6 +99,8 @@
           }
           .staticFont {
             font: normal normal normal 15px Nunito;
+            margin-bottom: 0;
+            color: $gray-200;
           }
           .dynamicFont {
             font: normal normal bold 15px Nunito;
@@ -115,5 +117,42 @@
         width: 86px;
       }
     }
+    p {
+      font-weight: 400;
+      margin-right: 30px;
+    }
+    .rejectOffer {
+      > p {
+        color: $red;
+      }
+    }
+    .acceptOffer {
+      display: flex;
+      align-items: center;
+      > button {
+        width: 100px;
+        margin-right: 30px;
+      }
+      > p {
+        color: $blue-200;
+      }
+    }
+    .soldOffer {
+      > p {
+        color: $green;
+      }
+    }
+    .waitingOffer {
+      > p {
+        color: $yellow;
+      }
+    }
   }
+}
+
+.displayBlock {
+  display: flex;
+}
+.displayNone {
+  display: none;
 }
