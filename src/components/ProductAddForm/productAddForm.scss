@@ -1,0 +1,72 @@
+@import '../../style/_variables';
+
+.productDropdown1,
+.productDropdown2 {
+  display: flex;
+  flex-wrap: wrap;
+  > div {
+    padding: 5px 5px 5px 0;
+  }
+}
+.dropdownH {
+  color: $gray-300;
+}
+
+.productAddForm {
+  > h1 {
+    font: normal normal bold 25px Nunito;
+    color: $gray-300;
+  }
+  h2 {
+    margin-top: 25px;
+    font: normal normal normal 15px/20px Nunito;
+    color: $gray-300;
+  }
+  &__productName {
+    > input {
+      margin-top: 5px;
+      width: 100%;
+      border: none;
+      background-color: $gray-100;
+      border-radius: 8px;
+      padding: 12px 0 11px 15px;
+      font: normal normal normal 16px Nunito;
+      color: $gray-250;
+    }
+  }
+  &__productDescription {
+    > textarea {
+      width: 100%;
+      margin-top: 5px;
+      border: none;
+      background-color: $gray-100;
+      border-radius: 8px;
+      padding: 12px 0 11px 15px;
+      font: normal normal normal 16px Nunito;
+      color: $gray-250;
+      resize: none;
+      outline: none;
+    }
+  }
+  &__productPrice {
+    > input {
+      width: 236px;
+      margin-top: 5px;
+      border: none;
+      background-color: $gray-100;
+      border-radius: 8px;
+      padding: 12px 0 11px 15px;
+      font: normal normal normal 16px Nunito;
+      color: $gray-250;
+    }
+    > .offerOption {
+      display: flex;
+      align-items: flex-end;
+      > h2 {
+        margin-right: 15px;
+        font: normal normal normal 16px Nunito;
+        color: $gray-300;
+      }
+    }
+  }
+}

@@ -31,7 +31,7 @@ function Header() {
             theme="secondary"
             size="medium"
             className="styledButton"
-            onClick={() => handleClick('/Account')}
+            onClick={() => handleClick('/ProductAdd')}
           >
             <img src={Plus} alt="plus-svg" />
             Ürün Ekle

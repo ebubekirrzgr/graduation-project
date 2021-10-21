@@ -1,4 +1,5 @@
 // import Register from './pages/Register';
+import ProductAdd from 'pages/Product-Add/ProductAdd';
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
@@ -27,6 +28,9 @@ function App() {
           </Route>
           <Route exact path="/ProductDetails/:id">
             <ProductDetails />
+          </Route>
+          <Route exact path="/ProductAdd">
+            <ProductAdd />
           </Route>
           <Route exact path="/Account">
             <Account />
