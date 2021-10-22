@@ -1,8 +1,10 @@
 import './offers.scss';
 
+import acceptOffers from 'actions/acceptOffer';
 import fetchGivenOffers from 'actions/givenOffers';
 import fetchPurchase from 'actions/purchaseProduct';
 import fetchReceivedOffers from 'actions/receivedOffers';
+import rejectOffers from 'actions/rejectOffers';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -118,6 +120,7 @@ const Offers = () => {
                   theme="primary"
                   size="medium"
                   className="styledButton"
+                  onClick={() => dispatch(acceptOffers(item.id))}
                 >
                   Onayla
                 </Button>
@@ -126,6 +129,7 @@ const Offers = () => {
                   theme="reject"
                   size="medium"
                   className="styledButton"
+                  onClick={() => dispatch(rejectOffers(item.id))}
                 >
                   Reddet
                 </Button>
