@@ -15,6 +15,7 @@ const uploadImageReducer = (state = initialState, action) => {
         uploadImageData: { url: '' },
         isError: false,
       };
+
     case UPLOAD_IMAGE.FETCH_UPLOAD_IMAGE_SUCCESS:
       return {
         ...state,
@@ -22,6 +23,7 @@ const uploadImageReducer = (state = initialState, action) => {
         isfetching: false,
         isError: false,
       };
+
     case UPLOAD_IMAGE.FETCH_UPLOAD_IMAGE_DELETE:
       return {
         ...state,
@@ -29,6 +31,7 @@ const uploadImageReducer = (state = initialState, action) => {
         isError: false,
         uploadImageData: { url: '' },
       };
+
     case UPLOAD_IMAGE.FETCH_UPLOAD_IMAGE_ERROR:
       return {
         ...state,
@@ -36,6 +39,7 @@ const uploadImageReducer = (state = initialState, action) => {
         uploadImageData: { url: '' },
         isError: true,
       };
+
     default:
       return state;
   }

@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import './productAddForm.scss';
 
 import fetchBrands from 'actions/brands';
@@ -9,12 +10,13 @@ import ToogleSwitch from 'components/ToggleSwitch';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-const ProductAddForm = () => {
+const ProductAddForm = ({ handleChange, values, errors, setValues }) => {
   const categories = useSelector((state) => state.categories);
   const colors = useSelector((state) => state.colors);
   const brands = useSelector((state) => state.brands);
   const status = useSelector((state) => state.status);
   const dispatch = useDispatch();
+
   useEffect(() => {
     if (categories.categoriesData.length === 0 && !categories.isFetching) {
       dispatch(fetchCategories());
@@ -45,17 +47,32 @@ const ProductAddForm = () => {
       <h1 className="productAddDetail">Ürün Detayları</h1>
       <div className="productAddForm__productName">
         <h2>Ürün Adı</h2>
-        <input type="text" placeholder="Örnek: Iphone 12 Pro Max" />
+        <input
+          name="title"
+          type="text"
+          placeholder="Örnek: Iphone 12 Pro Max"
+          onChange={(e) => {
+            setValues({ ...values, title: e.target.value });
+            handleChange();
+          }}
+          value={values.title}
+          className={errors.title ? '' : 'errorInput'}
+        />
       </div>
 
       <div className="productAddForm__productDescription">
-        <h2>Ürün Adı</h2>
+        <h2>Ürün Açıklaması</h2>
         <textarea
           placeholder="Ürün açıklaması girin"
-          name="productName"
+          name="description"
           id="productName"
           cols="20"
           rows="5"
+          onChange={(e) => {
+            setValues({ ...values, description: e.target.value });
+            handleChange();
+          }}
+          value={values.description}
         >
           {}
         </textarea>
@@ -64,31 +81,74 @@ const ProductAddForm = () => {
       <div className="productDropdown1">
         <div className="productCategory">
           <h2 className="dropdownH">Kategori</h2>
-          <Dropdown options={categories.categoriesData} title="Kategori Seç" />
+          <Dropdown
+            setDropdown={(e) => setValues({ ...values, category: e })}
+            name="category"
+            options={categories.categoriesData}
+            title="Kategori Seç"
+            handleChange={handleChange}
+            value={values.category}
+          />
         </div>
         <div className="productBrand">
           <h2 className="dropdownH">Marka</h2>
-          <Dropdown options={brands.brandsData} title="Marka Seç" />
+          <Dropdown
+            setDropdown={(e) => setValues({ ...values, brand: e })}
+            name="brand"
+            options={brands.brandsData}
+            title="Marka Seç"
+            handleChange={handleChange}
+            value={values.brand}
+          />
         </div>
       </div>
 
       <div className="productDropdown2">
         <div className="productColor">
           <h2 className="dropdownH">Renk</h2>
-          <Dropdown options={colors.colorsData} title="Renk Seç" />
+          <Dropdown
+            setDropdown={(e) => setValues({ ...values, color: e })}
+            name="color"
+            options={colors.colorsData}
+            handleChange={handleChange}
+            value={values.color}
+            title="Renk Seç"
+          />
         </div>
         <div className="productStatus">
           <h2 className="dropdownH">Kullanım Durumu</h2>
-          <Dropdown options={status.statusData} title="Kullanım durumu Seç" />
+          <Dropdown
+            setDropdown={(e) => setValues({ ...values, status: e })}
+            name="status"
+            options={status.statusData}
+            title="Kullanım durumu Seç"
+            handleChange={handleChange}
+            value={values.status}
+          />
         </div>
       </div>
 
       <div className="productAddForm__productPrice">
         <h2>Fiyat</h2>
-        <input type="number" placeholder="Bir fiyat girin" />
+        <input
+          name="price"
+          onChange={(e) => {
+            setValues({ ...values, price: e.target.value });
+            handleChange();
+          }}
+          type="number"
+          placeholder="Bir fiyat girin"
+          value={values.price}
+        />
         <div className="offerOption">
           <h2>Fiyat ve Teklif opsiyonu</h2>
-          <ToogleSwitch />
+
+          <ToogleSwitch
+            name="isOfferable"
+            handleChange={handleChange}
+            values={values}
+            setValues={setValues}
+          />
         </div>
       </div>
     </div>
