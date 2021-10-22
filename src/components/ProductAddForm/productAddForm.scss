@@ -25,6 +25,7 @@
   }
   &__productName {
     > input {
+      outline: none;
       margin-top: 5px;
       width: 100%;
       border: none;
@@ -52,6 +53,8 @@
   &__productPrice {
     > input {
       width: 236px;
+      outline: none;
+
       margin-top: 5px;
       border: none;
       background-color: $gray-100;

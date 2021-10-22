@@ -1,25 +1,29 @@
 import { combineReducers } from 'redux';
 
 import BrandsReducer from './brands';
-import categoriesReducer from './categories';
-import givenOffersReducer from './givenOffers';
+import CategoriesReducer from './categories';
+import ColorsReducer from './color';
+import GivenOffersReducer from './givenOffers';
 import LoginReducer from './login';
 import OfferReducer from './offer';
 import ProductDetailReducer from './productDetail';
 import ProductsReducer from './products';
 import PurchaseReducer from './purchase';
-import receivedOffersReducer from './receivedOffers';
+import ReceivedOffersReducer from './receivedOffers';
 import RegisterReducer from './register';
+import StatusReducer from './status';
 
 export default combineReducers({
   products: ProductsReducer,
   brands: BrandsReducer,
-  categories: categoriesReducer,
+  categories: CategoriesReducer,
   productDetail: ProductDetailReducer,
   register: RegisterReducer,
   login: LoginReducer,
   purchase: PurchaseReducer,
   offer: OfferReducer,
-  receivedOffers: receivedOffersReducer,
-  givenOffers: givenOffersReducer,
+  receivedOffers: ReceivedOffersReducer,
+  givenOffers: GivenOffersReducer,
+  status: StatusReducer,
+  colors: ColorsReducer,
 });

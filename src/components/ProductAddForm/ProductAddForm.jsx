@@ -1,11 +1,45 @@
 import './productAddForm.scss';
 
+import fetchBrands from 'actions/brands';
+import fetchCategories from 'actions/categories';
+import fetchColors from 'actions/colors';
+import fetchStatus from 'actions/status';
 import Dropdown from 'components/Dropdown';
 import ToogleSwitch from 'components/ToggleSwitch';
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 const ProductAddForm = () => {
-  console.log('sss');
+  const categories = useSelector((state) => state.categories);
+  const colors = useSelector((state) => state.colors);
+  const brands = useSelector((state) => state.brands);
+  const status = useSelector((state) => state.status);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    if (categories.categoriesData.length === 0 && !categories.isFetching) {
+      dispatch(fetchCategories());
+    }
+    if (colors.colorsData.length === 0 && !colors.isFetching) {
+      dispatch(fetchColors());
+    }
+    if (brands.brandsData.length === 0 && !brands.isFetching) {
+      dispatch(fetchBrands());
+    }
+    if (status.statusData.length === 0 && !status.isFetching) {
+      dispatch(fetchStatus());
+    }
+  }, [
+    brands.brandsData.length,
+    brands.isFetching,
+    categories.categoriesData.length,
+    categories.isFetching,
+    categories.length,
+    colors.colorsData.length,
+    colors.isFetching,
+    dispatch,
+    status.isFetching,
+    status.statusData.length,
+  ]);
   return (
     <div className="productAddForm">
       <h1 className="productAddDetail">Ürün Detayları</h1>
@@ -30,22 +64,22 @@ const ProductAddForm = () => {
       <div className="productDropdown1">
         <div className="productCategory">
           <h2 className="dropdownH">Kategori</h2>
-          <Dropdown />
+          <Dropdown options={categories.categoriesData} title="Kategori Seç" />
         </div>
         <div className="productBrand">
           <h2 className="dropdownH">Marka</h2>
-          <Dropdown />
+          <Dropdown options={brands.brandsData} title="Marka Seç" />
         </div>
       </div>
 
       <div className="productDropdown2">
         <div className="productColor">
           <h2 className="dropdownH">Renk</h2>
-          <Dropdown />
+          <Dropdown options={colors.colorsData} title="Renk Seç" />
         </div>
         <div className="productStatus">
           <h2 className="dropdownH">Kullanım Durumu</h2>
-          <Dropdown />
+          <Dropdown options={status.statusData} title="Kullanım durumu Seç" />
         </div>
       </div>
 
