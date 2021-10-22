@@ -12,6 +12,7 @@ import PurchaseReducer from './purchase';
 import ReceivedOffersReducer from './receivedOffers';
 import RegisterReducer from './register';
 import StatusReducer from './status';
+import UploadImageReducer from './uploadImage';
 
 export default combineReducers({
   products: ProductsReducer,
@@ -26,4 +27,5 @@ export default combineReducers({
   givenOffers: GivenOffersReducer,
   status: StatusReducer,
   colors: ColorsReducer,
+  uploadImage: UploadImageReducer,
 });
