@@ -19,6 +19,11 @@ const uploadImageError = (err) => ({
   payload: err,
 });
 
+const uploadImageProgress = (progress) => ({
+  type: UPLOAD_IMAGE.UPLOAD_IMAGE_PROGRESS,
+  payload: progress,
+});
+
 const postUploadImage = (data) => async (dispatch) => {
   const image = new FormData();
   image.append('file', data);
@@ -28,6 +33,13 @@ const postUploadImage = (data) => async (dispatch) => {
       headers: {
         Authorization: `Bearer ${localStorage.getItem('token')}`,
         'content-type': 'multipart/form-data',
+      },
+      onUploadProgress: (progressEvent) => {
+        dispatch(
+          uploadImageProgress(
+            Math.floor((progressEvent.loaded * 100) / progressEvent.total)
+          )
+        );
       },
     })
     .then((message) => dispatch(uploadImageSuccess(message.data)))

@@ -1,0 +1,11 @@
+.progressBarContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 59px 145px;
+  > h4 {
+    font: normal normal normal 12px/23px Nunito;
+    color: #525252;
+  }
+}

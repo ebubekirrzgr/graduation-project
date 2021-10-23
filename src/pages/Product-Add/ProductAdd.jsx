@@ -33,26 +33,33 @@ const ProductAdd = () => {
   return (
     <>
       <Header />
-      <pre>{JSON.stringify(values, undefined, 2)}</pre>
       <div className="container">
-        <div className="productAdd">
-          <ProductAddForm
-            handleChange={handleChange}
-            values={values}
-            errors={errors}
-            setValues={setValues}
-          />
-          <UploadImage
-            handleChange={handleChange}
-            values={values}
-            errors={errors}
-            setValues={setValues}
-            setSelected={(e) => setValues({ ...values, imageUrl: e })}
-          />
+        <div className="productAddMain">
+          <div className="productAdd">
+            <ProductAddForm
+              handleChange={handleChange}
+              values={values}
+              errors={errors}
+              setValues={setValues}
+            />
+            <UploadImage
+              handleChange={handleChange}
+              values={values}
+              errors={errors}
+              setValues={setValues}
+              setSelected={(e) => setValues({ ...values, imageUrl: e })}
+            />
+          </div>
+          <div className="submitBtn">
+            <button
+              className="productAddBtn"
+              onClick={handleSubmit}
+              type="button"
+            >
+              Kaydet
+            </button>
+          </div>
         </div>
-        <button onClick={handleSubmit} type="button">
-          Kaydet
-        </button>
       </div>
     </>
   );

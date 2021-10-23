@@ -2,6 +2,7 @@
 import './uploadImage.scss';
 
 import postUploadImage from 'actions/uploadImage';
+import ProgressBar from 'components/ProgressBar/ProgressBar';
 import React, { useEffect } from 'react';
 import { useDropzone } from 'react-dropzone';
 import { useDispatch, useSelector } from 'react-redux';
@@ -14,6 +15,7 @@ const UploadImage = ({ setSelected, values }) => {
 
   const { getRootProps, getInputProps } = useDropzone({
     accept: 'image/*',
+    maxSize: 409600,
     onDrop: (acceptedFiles) => {
       acceptedFiles.map((file) => dispatch(postUploadImage(file)));
     },
@@ -28,16 +30,25 @@ const UploadImage = ({ setSelected, values }) => {
   return (
     <div className="uploadImage">
       <h1>Ürün Görseli</h1>
-      <div {...getRootProps()}>
-        <input {...getInputProps()} />
+      {uploadImageData.isFetching && (
         <div className="dropArea">
-          <img src={drop} alt="drop" />
-          <h3>Sürükleyip bırakarak</h3>
-          <h3 className="orH">veya</h3>
-          <button type="submit">Görsel Seçin</button>
-          <h4>PNG ve JPEG Dosya boyutu: max. 400kb</h4>
+          <ProgressBar progress={uploadImageData.uploadProgress} />
         </div>
-      </div>
+      )}
+
+      {!uploadImageData.isFetching &&
+        uploadImageData.uploadImageData?.url.length === 0 && (
+          <div {...getRootProps()}>
+            <input {...getInputProps()} />
+            <div className="dropArea">
+              <img src={drop} alt="drop" />
+              <h3>Sürükleyip bırakarak</h3>
+              <h3 className="orH">veya</h3>
+              <button type="submit">Görsel Seçin</button>
+              <h4>PNG ve JPEG Dosya boyutu: max. 400kb</h4>
+            </div>
+          </div>
+        )}
       {uploadImageData?.uploadImageData?.url?.length > 0 && (
         <div className="uploadImageReview">
           <img

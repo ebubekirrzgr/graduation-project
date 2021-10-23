@@ -4,6 +4,7 @@ const initialState = {
   uploadImageData: { url: '' },
   isFetching: false,
   isError: false,
+  uploadProgress: 0,
 };
 
 const uploadImageReducer = (state = initialState, action) => {
@@ -11,17 +12,19 @@ const uploadImageReducer = (state = initialState, action) => {
     case UPLOAD_IMAGE.FETCH_UPLOAD_IMAGE_PENDING:
       return {
         ...state,
-        isfetching: true,
+        isFetching: true,
         uploadImageData: { url: '' },
         isError: false,
+        uploadProgress: 0,
       };
 
     case UPLOAD_IMAGE.FETCH_UPLOAD_IMAGE_SUCCESS:
       return {
         ...state,
         uploadImageData: action.payload,
-        isfetching: false,
+        isFetching: false,
         isError: false,
+        uploadProgress: 0,
       };
 
     case UPLOAD_IMAGE.FETCH_UPLOAD_IMAGE_DELETE:
@@ -30,14 +33,25 @@ const uploadImageReducer = (state = initialState, action) => {
         isFetching: false,
         isError: false,
         uploadImageData: { url: '' },
+        uploadProgress: 0,
       };
 
     case UPLOAD_IMAGE.FETCH_UPLOAD_IMAGE_ERROR:
       return {
         ...state,
-        isfetching: false,
+        isFetching: false,
         uploadImageData: { url: '' },
         isError: true,
+        uploadProgress: 0,
+      };
+
+    case UPLOAD_IMAGE.UPLOAD_IMAGE_PROGRESS:
+      return {
+        ...state,
+        isFetching: true,
+        uploadImageData: { url: '' },
+        isError: false,
+        uploadProgress: action.payload,
       };
 
     default:
