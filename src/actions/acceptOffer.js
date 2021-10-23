@@ -1,6 +1,8 @@
 import axios from 'axios';
 import ACCEPT_OFFERS from 'constants/acceptOffers';
 
+import fetchReceivedOffers from './receivedOffers';
+
 const fetchSuccess = (data) => ({
   type: ACCEPT_OFFERS.ACCEPT_OFFERS_SUCCESS,
   payload: data,
@@ -28,7 +30,8 @@ const acceptOffers = (offerId) => async (dispatch) => {
       }
     )
     .then((data) => dispatch(fetchSuccess(data)))
-    .catch((error) => dispatch(fetchError(error)));
+    .catch((error) => dispatch(fetchError(error)))
+    .finally(() => dispatch(fetchReceivedOffers()));
 };
 
 export default acceptOffers;

@@ -4,6 +4,7 @@ import AcceptOffersReducer from './acceptOffers';
 import BrandsReducer from './brands';
 import CategoriesReducer from './categories';
 import ColorsReducer from './color';
+import CreateProductReducer from './createProduct';
 import GivenOffersReducer from './givenOffers';
 import LoginReducer from './login';
 import OfferReducer from './offer';
@@ -35,4 +36,5 @@ export default combineReducers({
   receivedOffers: ReceivedOffersReducer,
   rejectOffer: RejectOffersReducer,
   acceptOffer: AcceptOffersReducer,
+  createProduct: CreateProductReducer,
 });

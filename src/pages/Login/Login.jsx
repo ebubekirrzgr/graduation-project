@@ -13,9 +13,11 @@ import validate from '../../validateInfo';
 const Login = () => {
   const dispatch = useDispatch();
   const history = useHistory();
-  const loginData = useSelector((state) => state.login.loginData);
+  const login = useSelector((state) => state.login);
   const submitForm = (data) => {
-    dispatch(loginAction(data));
+    if (!login.isFetching) {
+      dispatch(loginAction(data));
+    }
   };
   const { handleChange, values, handleSubmit, errors } = useForm(
     submitForm,
@@ -25,7 +27,7 @@ const Login = () => {
     if (localStorage.getItem('token')) {
       history.push('/Home');
     }
-  }, [history, loginData]);
+  }, [history, login.loginData]);
   return (
     <div className="main-container">
       <div className="img-container">

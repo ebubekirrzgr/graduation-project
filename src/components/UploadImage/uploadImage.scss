@@ -18,7 +18,7 @@
     padding: 20px 0;
     min-width: 235px;
     &:hover {
-      border-color: red;
+      border-color: $blue-200;
     }
     > button {
       margin-top: 5px;
@@ -28,6 +28,7 @@
       width: 122px;
       height: 30px;
       border-radius: 15px;
+      cursor: pointer;
     }
     > h3 {
       font: normal normal 600 14px/15px Nunito;

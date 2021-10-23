@@ -1,11 +1,13 @@
 import './productAdd.scss';
 
+import createProductAction from 'actions/createProduct';
 import Header from 'components/Header';
 import ProductAddForm from 'components/ProductAddForm';
 import UploadImage from 'components/UploadImage';
 import validate from 'helpers/productAddValidates';
 import useProductAdd from 'helpers/useProductAdd';
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 
 const ProductAdd = () => {
   const [values, setValues] = useState({
@@ -19,10 +21,10 @@ const ProductAdd = () => {
     imageUrl: '',
     isOfferable: false,
   });
+  const dispatch = useDispatch();
 
   const submitForm = (item) => {
-    console.log(item);
-    // Buraya post işlemleri gelcek
+    dispatch(createProductAction(item));
   };
 
   const { handleChange, handleSubmit, errors } = useProductAdd(
@@ -33,32 +35,31 @@ const ProductAdd = () => {
   return (
     <>
       <Header />
+      <pre>{JSON.stringify(errors, undefined, 2)}</pre>
       <div className="container">
-        <div className="productAddMain">
-          <div className="productAdd">
-            <ProductAddForm
-              handleChange={handleChange}
-              values={values}
-              errors={errors}
-              setValues={setValues}
-            />
-            <UploadImage
-              handleChange={handleChange}
-              values={values}
-              errors={errors}
-              setValues={setValues}
-              setSelected={(e) => setValues({ ...values, imageUrl: e })}
-            />
-          </div>
-          <div className="submitBtn">
-            <button
-              className="productAddBtn"
-              onClick={handleSubmit}
-              type="button"
-            >
-              Kaydet
-            </button>
-          </div>
+        <div className="productAdd">
+          <ProductAddForm
+            handleChange={handleChange}
+            values={values}
+            errors={errors}
+            setValues={setValues}
+          />
+          <UploadImage
+            handleChange={handleChange}
+            values={values}
+            errors={errors}
+            setValues={setValues}
+            setSelected={(e) => setValues({ ...values, imageUrl: e })}
+          />
+        </div>
+        <div className="submitBtn">
+          <button
+            className="productAddBtn"
+            onClick={handleSubmit}
+            type="button"
+          >
+            Kaydet
+          </button>
         </div>
       </div>
     </>

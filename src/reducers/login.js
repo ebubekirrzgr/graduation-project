@@ -7,7 +7,7 @@ const initialState = {
   error: '',
 };
 
-function registration(state = initialState, action) {
+function login(state = initialState, action) {
   switch (action.type) {
     case LOGIN.LOGIN_REQUEST:
       return { ...state, isFetching: true, loginData: {}, isError: false };
@@ -30,4 +30,4 @@ function registration(state = initialState, action) {
       return state;
   }
 }
-export default registration;
+export default login;

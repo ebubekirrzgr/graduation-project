@@ -133,7 +133,7 @@ const ProductAddForm = ({ handleChange, values, errors, setValues }) => {
         <input
           name="price"
           onChange={(e) => {
-            setValues({ ...values, price: e.target.value });
+            setValues({ ...values, price: Number(e.target.value) });
             handleChange();
           }}
           type="number"

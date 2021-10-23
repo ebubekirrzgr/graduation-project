@@ -10,7 +10,6 @@ const useProductAdd = (submitForm, validate, values) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(values);
     setErrors(validate(values));
     setIsSubmitting(true);
   };

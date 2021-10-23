@@ -1,6 +1,8 @@
 import axios from 'axios';
 import REJECT_OFFERS from 'constants/rejectOffers';
 
+import fetchReceivedOffers from './receivedOffers';
+
 const fetchSuccess = (data) => ({
   type: REJECT_OFFERS.REJECT_OFFERS_SUCCESS,
   payload: data,
@@ -28,7 +30,8 @@ const rejectOffers = (offerId, obj) => async (dispatch) => {
       }
     )
     .then((data) => dispatch(fetchSuccess(data)))
-    .catch((error) => dispatch(fetchError(error)));
+    .catch((error) => dispatch(fetchError(error)))
+    .finally(() => dispatch(fetchReceivedOffers()));
 };
 
 export default rejectOffers;
