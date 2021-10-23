@@ -14,3 +14,20 @@ body {
   max-width: 1480px;
   margin: 0 auto;
 }
+.Toastify__toast-theme--colored.Toastify__toast--error {
+  color: #f77474 !important;
+  background: #ffe5e5 !important;
+}
+
+.Toastify__toast-theme--colored.Toastify__toast--success {
+  color: #46af32 !important;
+  background: #f1fff0 !important;
+}
+
+.Toastify__close-button {
+  display: none;
+}
+.toast-container {
+  width: 321px !important;
+  height: 60px !important;
+}

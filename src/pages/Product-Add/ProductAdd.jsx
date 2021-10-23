@@ -35,7 +35,6 @@ const ProductAdd = () => {
   return (
     <>
       <Header />
-      <pre>{JSON.stringify(errors, undefined, 2)}</pre>
       <div className="container">
         <div className="productAdd">
           <ProductAddForm

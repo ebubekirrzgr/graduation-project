@@ -154,7 +154,7 @@ const Offers = () => {
               </div>
               <div
                 className={
-                  item.status === 'accepted offered' && !offerState
+                  !item.isSold && item.status === 'accepted' && !offerState
                     ? 'acceptOffer displayBlock'
                     : 'displayNone'
                 }

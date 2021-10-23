@@ -57,15 +57,7 @@
     background-color: $red-100;
   }
 }
-button {
-  font-size: 18px;
-  background-color: $blue-200;
-  color: $white-100;
-  border-radius: 8px;
-  border: none;
-  width: 100%;
-  height: 45px;
-}
+
 .main-container {
   width: 100vw;
   height: 100vh;
@@ -106,6 +98,15 @@ button {
   padding: 70px 90px;
   &:not(.register-text-container) {
     text-align: left;
+  }
+  > button {
+    font-size: 18px;
+    background-color: $blue-200;
+    color: $white-100;
+    border-radius: 8px;
+    border: none;
+    width: 100%;
+    height: 45px;
   }
 }
 .mg {
