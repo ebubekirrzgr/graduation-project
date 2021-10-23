@@ -1,5 +1,6 @@
 import axios from 'axios';
 import PURCHASE from 'constants/purchase';
+import { toast } from 'react-toastify';
 
 import fetchProductDetail from './productDetail';
 
@@ -29,8 +30,28 @@ const fetchPurchase = (productId) => async (dispatch) => {
         },
       }
     )
-    .then((data) => dispatch(fetchSuccess(data)))
-    .catch((error) => dispatch(fetchError(error)))
+    .then((data) => {
+      dispatch(fetchSuccess(data));
+      toast.success('Satın alındı', {
+        position: 'top-right',
+        autoClose: 3000,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    })
+    .catch((error) => {
+      dispatch(fetchError(error));
+      toast.error('Ürün zaten satılmış veya kendi ürününüzü alamazsınız!', {
+        position: 'top-right',
+        autoClose: 3000,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    })
     .then(() => dispatch(fetchProductDetail(productId)));
 };
 

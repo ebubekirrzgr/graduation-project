@@ -5,14 +5,17 @@ import { toast } from 'react-toastify';
 export const loginRequest = () => ({
   type: LOGIN.LOGIN_REQUEST,
 });
+
 export const loginSuccess = (data) => ({
   type: LOGIN.LOGIN_SUCCESS,
   payload: data,
 });
+
 export const loginFailure = (err) => ({
   type: LOGIN.LOGIN_FAILURE,
   payload: err,
 });
+
 export const loginAction = (data) => async (dispatch) => {
   dispatch(loginRequest());
   return axios
@@ -21,7 +24,7 @@ export const loginAction = (data) => async (dispatch) => {
       dispatch(loginSuccess(response.data));
       localStorage.setItem('token', response.data.access_token);
       localStorage.setItem('email', data.email);
-      toast.success('🦄 Giriş başarılı!', {
+      toast.success('Giriş başarılı!', {
         position: 'top-right',
         autoClose: 3000,
         closeOnClick: true,
@@ -32,7 +35,7 @@ export const loginAction = (data) => async (dispatch) => {
     })
     .catch((err) => {
       dispatch(loginFailure(err));
-      toast.error('🦄 Giriş başarısız!', {
+      toast.error('Emailiniz veya şifreniz hatalı.', {
         position: 'top-right',
         autoClose: 3000,
         closeOnClick: true,

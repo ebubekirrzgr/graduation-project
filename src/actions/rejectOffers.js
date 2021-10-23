@@ -1,5 +1,6 @@
 import axios from 'axios';
 import REJECT_OFFERS from 'constants/rejectOffers';
+import { toast } from 'react-toastify';
 
 import fetchReceivedOffers from './receivedOffers';
 
@@ -29,8 +30,28 @@ const rejectOffers = (offerId, obj) => async (dispatch) => {
         },
       }
     )
-    .then((data) => dispatch(fetchSuccess(data)))
-    .catch((error) => dispatch(fetchError(error)))
+    .then((data) => {
+      dispatch(fetchSuccess(data));
+      toast.success('Teklif reddedildi', {
+        position: 'top-right',
+        autoClose: 3000,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    })
+    .catch((error) => {
+      dispatch(fetchError(error));
+      toast.error('Teklif reddetme işlemi hatalı.', {
+        position: 'top-right',
+        autoClose: 3000,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    })
     .finally(() => dispatch(fetchReceivedOffers()));
 };
 
