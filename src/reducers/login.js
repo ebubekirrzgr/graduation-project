@@ -1,7 +1,7 @@
 import LOGIN from 'constants/login';
 
 const initialState = {
-  loginData: {},
+  loginData: { access_token: '' },
   isFetching: false,
   isError: false,
   error: '',
@@ -10,7 +10,12 @@ const initialState = {
 function login(state = initialState, action) {
   switch (action.type) {
     case LOGIN.LOGIN_REQUEST:
-      return { ...state, isFetching: true, loginData: {}, isError: false };
+      return {
+        ...state,
+        isFetching: true,
+        loginData: { access_token: '' },
+        isError: false,
+      };
     case LOGIN.LOGIN_SUCCESS:
       return {
         ...state,
@@ -22,7 +27,7 @@ function login(state = initialState, action) {
       return {
         ...state,
         isFetching: false,
-        loginData: {},
+        loginData: { access_token: '' },
         isError: true,
         error: action.payload,
       };

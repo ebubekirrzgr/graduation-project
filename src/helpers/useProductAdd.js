@@ -16,6 +16,7 @@ const useProductAdd = (submitForm, validate, values) => {
 
   useEffect(() => {
     if (Object.keys(errors).length === 0 && isSubmitting) {
+      setIsSubmitting(false);
       submitForm(values);
     }
   }, [submitForm, errors, isSubmitting, values]);

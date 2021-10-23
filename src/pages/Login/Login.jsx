@@ -14,8 +14,9 @@ const Login = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const login = useSelector((state) => state.login);
+
   const submitForm = (data) => {
-    if (!login.isFetching) {
+    if (!login.isFetching && login.loginData.access_token.length === 0) {
       dispatch(loginAction(data));
     }
   };

@@ -2,9 +2,9 @@
 import './register.scss';
 
 import { registerAction } from 'actions/register';
-import React from 'react';
-import { useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link, useHistory } from 'react-router-dom';
 
 import RegisterModel from '../../assets/images/model.png';
 import Logo from '../../assets/svg/logo.svg';
@@ -13,6 +13,8 @@ import validate from '../../validateInfo';
 
 const Register = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
+  const register = useSelector((state) => state.register);
   const submitForm = (data) => {
     dispatch(registerAction(data));
   };
@@ -20,6 +22,11 @@ const Register = () => {
     submitForm,
     validate
   );
+  useEffect(() => {
+    if (localStorage.getItem('token')) {
+      history.push('/Home');
+    }
+  }, [history, register.registerData]);
   return (
     <div className="main-container">
       <div className="img-container">
