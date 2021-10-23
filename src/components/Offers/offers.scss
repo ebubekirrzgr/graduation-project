@@ -67,6 +67,14 @@
     border: 1px solid $gray-100;
     border-radius: 8px;
     margin-bottom: 20px;
+    .acceptOffer {
+      > Button {
+        width: 86px;
+        height: 30px;
+        border-radius: 8px;
+        border: none;
+      }
+    }
     .offerProductDetail {
       display: flex;
       > img {
@@ -115,6 +123,12 @@
       margin-right: 30px;
       button {
         width: 86px;
+        height: 30px;
+        border-radius: 8px;
+        border: none;
+        &:not(:last-child) {
+          margin-right: 10px;
+        }
       }
     }
     p {

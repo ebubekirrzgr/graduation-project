@@ -2,8 +2,14 @@
 .product-details {
   padding: 20px 220px;
   height: 100%;
-  Button {
+  > Button {
     cursor: pointer;
+    border: none;
+    width: 235px;
+    height: 45px;
+    padding: 8px;
+    border-radius: 8px;
+    font-weight: bold;
     &:not(:last-child) {
       margin-right: 10px;
     }
@@ -48,6 +54,22 @@
   &__detail {
     margin-top: 30px;
     width: 480px;
+  }
+  &__offerButtons {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    > Button {
+      cursor: pointer;
+      border: none;
+      width: 235px;
+      height: 45px;
+      padding: 8px;
+      border-radius: 8px;
+      &:not(:last-child) {
+        margin-right: 10px;
+      }
+    }
   }
   &__offerButtons,
   .isSoldButton {
