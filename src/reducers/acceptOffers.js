@@ -15,6 +15,7 @@ const acceptOffersReducer = (state = initialState, action) => {
         acceptOffersData: {},
         isError: false,
       };
+
     case ACCEPT_OFFERS.ACCEPT_OFFERS_SUCCESS:
       return {
         ...state,
@@ -22,6 +23,7 @@ const acceptOffersReducer = (state = initialState, action) => {
         isFetching: false,
         isError: false,
       };
+
     case ACCEPT_OFFERS.ACCEPT_OFFERS_ERROR:
       return {
         ...state,
@@ -29,6 +31,7 @@ const acceptOffersReducer = (state = initialState, action) => {
         acceptOffersData: {},
         isError: true,
       };
+
     default:
       return state;
   }

@@ -1,5 +1,6 @@
 @import '../../../style/variables';
-.confirmModal {
+
+.cancelModal {
   width: 100vw;
   height: 100vh;
   background-color: rgba(75, 156, 226, 0.7);
@@ -13,7 +14,7 @@
   align-items: center;
   z-index: 999;
 }
-.confirmModalContainer {
+.cancelModalContainer {
   width: 355px;
   height: 171px;
   display: flex;
@@ -21,12 +22,13 @@
   padding: 8px;
   background-color: $white-100;
   border-radius: 8px;
+  padding: 20px;
   .title {
     display: inline-block;
     text-align: center;
-    margin-top: 20px;
+    margin-bottom: 17px;
     h1 {
-      color: #525252;
+      margin-bottom: 0;
       font: normal normal bold 25px Nunito;
     }
   }
@@ -38,13 +40,13 @@
       margin: 0;
     }
   }
-  .confirmModalButtons {
+  .cancelModalButtons {
     display: flex;
     margin-bottom: 20px;
     margin-top: 20px;
-    Button {
-      font: normal normal bold 18px Nunito;
+    > Button {
       cursor: pointer;
+      width: 65%;
       &:not(:first-child) {
         margin-left: 10px;
       }

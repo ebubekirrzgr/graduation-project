@@ -54,6 +54,14 @@
   &__detail {
     margin-top: 30px;
     width: 480px;
+    Button {
+      cursor: pointer;
+      border: none;
+      width: 235px;
+      height: 45px;
+      padding: 8px;
+      border-radius: 8px;
+    }
   }
   &__offerButtons {
     display: flex;
@@ -123,5 +131,15 @@
 .isSoldButton {
   > Button {
     cursor: no-drop;
+  }
+}
+
+.givenOfferButton {
+  width: 250px !important;
+  height: 36px !important;
+  display: flex;
+  padding: 8px !important;
+  > h5 {
+    margin-left: 5px;
   }
 }

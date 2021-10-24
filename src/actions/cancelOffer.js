@@ -1,30 +1,28 @@
 import axios from 'axios';
-import OFFER from 'constants/offer';
+import CANCEL_OFFER from 'constants/cancelOffer';
 import { toast } from 'react-toastify';
 
 import fetchGivenOffers from './givenOffers';
-import fetchProductDetail from './productDetail';
 
 const fetchSuccess = (data) => ({
-  type: OFFER.FETCH_OFFER_SUCCESS,
+  type: CANCEL_OFFER.CANCEL_OFFER_SUCCESS,
   payload: data,
 });
 
 const fetchError = (error) => ({
-  type: OFFER.FETCH_OFFER_ERROR,
+  type: CANCEL_OFFER.CANCEL_OFFER_ERROR,
   payload: error,
 });
 
 const fetchPending = () => ({
-  type: OFFER.FETCH_OFFER_PENDING,
+  type: CANCEL_OFFER.CANCEL_OFFER_PENDING,
 });
 
-const postOffer = (offerId, obj) => async (dispatch) => {
+const cancelOffer = (offerId) => async (dispatch) => {
   dispatch(fetchPending());
   return axios
-    .post(
-      `https://bootcampapi.techcs.io/api/fe/v1/product/offer/${offerId}`,
-      obj,
+    .delete(
+      `https://bootcampapi.techcs.io/api/fe/v1/account/cancel-offer/${offerId}`,
       {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`,
@@ -33,7 +31,7 @@ const postOffer = (offerId, obj) => async (dispatch) => {
     )
     .then((data) => {
       dispatch(fetchSuccess(data));
-      toast.success('Teklif verme işlemi başarılı.', {
+      toast.success('Teklif geri çekildi.', {
         position: 'top-right',
         autoClose: 3000,
         closeOnClick: true,
@@ -44,7 +42,7 @@ const postOffer = (offerId, obj) => async (dispatch) => {
     })
     .catch((error) => {
       dispatch(fetchError(error));
-      toast.error('Kendi ürünüze teklif veremezsiniz.', {
+      toast.error('Teklifi geri çekme işlemi başarısız.', {
         position: 'top-right',
         autoClose: 3000,
         closeOnClick: true,
@@ -53,10 +51,7 @@ const postOffer = (offerId, obj) => async (dispatch) => {
         progress: undefined,
       });
     })
-    .then(() => {
-      dispatch(fetchProductDetail(offerId));
-      dispatch(fetchGivenOffers());
-    });
+    .finally(() => dispatch(fetchGivenOffers()));
 };
 
-export default postOffer;
+export default cancelOffer;

@@ -1,6 +1,7 @@
-/* eslint-disable no-debugger */
 import './product.scss';
 
+import fetchGivenOffers from 'actions/givenOffers';
+import CancelModal from 'components/Modals/CancelModal/cancelOfferModal';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router';
@@ -13,24 +14,39 @@ import OfferModal from '../Modals/OfferModal/offerModal';
 
 const ProductDetail = () => {
   const productDetail = useSelector((state) => state.productDetail);
+  const givenOffers = useSelector((state) => state.givenOffers);
   const dispatch = useDispatch();
   const { id } = useParams();
   const [openConfirmModal, setConfirmModal] = useState(false);
   const [openOfferModal, setOfferModal] = useState(false);
+  const [openCancelModal, setCancelModal] = useState(false);
+
   useEffect(() => {
     dispatch(fetchProductDetails(id));
+    dispatch(fetchGivenOffers());
   }, [dispatch, id]);
 
-  if (productDetail.isFetching && !productDetail.productDetailData.id)
+  if (productDetail.isFetching && !productDetail.productDetailData.id) {
     return (
       <div className="spinner">
         <img src={spinner} alt="" />
       </div>
     );
-  if (productDetail.isError)
+  }
+
+  if (productDetail.isError) {
     return <div>{productDetail.productDetailData.error}</div>;
+  }
+
+  const givenOffer = givenOffers?.givenOffersData.filter(
+    (item) => item.product.id === id
+  );
+
+  console.log('givenOffer :>> ', givenOffer[0]?.id);
+
   return (
     <>
+      {givenOffer?.product?.id}
       <div className="product-details">
         <div className="product">
           <div className="product__image">
@@ -39,6 +55,7 @@ const ProductDetail = () => {
               alt={productDetail.productDetailData.title}
             />
           </div>
+
           <div className="product__detail">
             <h1 className="product__title">
               {productDetail.productDetailData.title}
@@ -57,6 +74,7 @@ const ProductDetail = () => {
                 <span>{productDetail.productDetailData.status.title}</span>
               </div>
             </div>
+
             <h2 className="product__price">
               <span>
                 {productDetail.productDetailData.price
@@ -68,6 +86,7 @@ const ProductDetail = () => {
               </span>{' '}
               TL
             </h2>
+
             <div
               className={
                 productDetail.productDetailData.isSold
@@ -84,37 +103,105 @@ const ProductDetail = () => {
                 Bu Ürün Satışta Değil
               </Button>
             </div>
-            {/*  I control the sales status here */}
-            {!productDetail.productDetailData.isSold && (
-              <div className="product__offerButtons">
+
+            {productDetail.productDetailData.id ===
+              givenOffer[0]?.product?.id && (
+              <div
+                className={
+                  !productDetail.productDetailData.isSold
+                    ? 'isSoldButton buttonDisplayBlock'
+                    : 'buttonDisplayNone'
+                }
+              >
                 <Button
                   type="submit"
-                  theme="primary"
-                  size="large"
-                  className="confirmModalBtn"
-                  onClick={() => {
-                    setConfirmModal(true);
-                  }}
+                  theme="offer"
+                  size="medium"
+                  className="givenOfferButton"
                 >
-                  Satın Al
-                </Button>
-                <Button
-                  type="submit"
-                  theme="secondary"
-                  size="large"
-                  className="offerModalBtn"
-                  onClick={() => {
-                    setOfferModal(true);
-                  }}
-                >
-                  Teklif Ver
+                  Verilen Teklif:
+                  <h5>
+                    {givenOffer[0].offeredPrice
+                      .toLocaleString('tr-TR', {
+                        style: 'currency',
+                        currency: 'TRY',
+                      })
+                      .slice(1)}{' '}
+                    TL
+                  </h5>
                 </Button>
               </div>
             )}
+
+            {/*  I control the sales status here */}
+            {!productDetail.productDetailData.isSold &&
+              productDetail.productDetailData.id !==
+                givenOffer[0]?.product?.id && (
+                <div className="product__offerButtons">
+                  <Button
+                    type="submit"
+                    theme="primary"
+                    size="large"
+                    className="confirmModalBtn"
+                    onClick={() => {
+                      setConfirmModal(true);
+                    }}
+                  >
+                    Satın Al
+                  </Button>
+                  <Button
+                    type="submit"
+                    theme="secondary"
+                    size="large"
+                    className="offerModalBtn"
+                    onClick={() => {
+                      setOfferModal(true);
+                    }}
+                  >
+                    Teklif Ver
+                  </Button>
+                </div>
+              )}
+
+            {!productDetail.productDetailData.isSold &&
+              productDetail.productDetailData.id ===
+                givenOffer[0]?.product?.id && (
+                <div className="product__offerButtons">
+                  <Button
+                    type="submit"
+                    theme="primary"
+                    size="large"
+                    className="confirmModalBtn"
+                    onClick={() => {
+                      setConfirmModal(true);
+                    }}
+                  >
+                    Satın Al
+                  </Button>
+                  <Button
+                    type="submit"
+                    theme="secondary"
+                    size="large"
+                    className="offerModalBtn"
+                    onClick={() => {
+                      setCancelModal(true);
+                    }}
+                  >
+                    Teklifi Geri Çek
+                  </Button>
+                </div>
+              )}
+
             {openConfirmModal && (
               <ConfirmModal
                 closeModal={setConfirmModal}
                 id={productDetail.productDetailData.id}
+              />
+            )}
+            {openCancelModal && (
+              <CancelModal
+                closeModal={setCancelModal}
+                offerId={givenOffer[0]?.id}
               />
             )}
             {openOfferModal && (
@@ -126,7 +213,9 @@ const ProductDetail = () => {
                 offerId={productDetail.productDetailData.id}
               />
             )}
+
             <h4 className="product__desc">Açıklama</h4>
+
             <span className="product__description">
               {productDetail.productDetailData.description}
             </span>

@@ -2,6 +2,7 @@ import { combineReducers } from 'redux';
 
 import AcceptOffersReducer from './acceptOffers';
 import BrandsReducer from './brands';
+import CancelOffersReducer from './cancelOffer';
 import CategoriesReducer from './categories';
 import ColorsReducer from './color';
 import CreateProductReducer from './createProduct';
@@ -30,11 +31,12 @@ export default combineReducers({
   productDetail: ProductDetailReducer,
   uploadImage: UploadImageReducer,
 
-  offer: OfferReducer,
+  createProduct: CreateProductReducer,
   purchase: PurchaseReducer,
+  offer: OfferReducer,
   givenOffers: GivenOffersReducer,
   receivedOffers: ReceivedOffersReducer,
   rejectOffer: RejectOffersReducer,
   acceptOffer: AcceptOffersReducer,
-  createProduct: CreateProductReducer,
+  cancelOffer: CancelOffersReducer,
 });
