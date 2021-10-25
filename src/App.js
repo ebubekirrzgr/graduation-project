@@ -36,19 +36,9 @@ function App() {
     <div className="App">
       <Router>
         <Switch>
-          <ProtectedRoute
-            exact
-            path="/Account"
-            isLoggedIn={isLoggedIn}
-            component={Account}
-          />
+          <ProtectedRoute exact path="/Account" component={Account} />
 
-          <ProtectedRoute
-            exact
-            path="/ProductAdd"
-            isLoggedIn={isLoggedIn}
-            component={ProductAdd}
-          />
+          <ProtectedRoute exact path="/ProductAdd" component={ProductAdd} />
 
           <AuthRoute path="/Login" isLoggedIn={isLoggedIn} component={Login} />
 
