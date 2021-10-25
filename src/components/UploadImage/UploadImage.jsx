@@ -6,6 +6,7 @@ import ProgressBar from 'components/ProgressBar/ProgressBar';
 import React, { useEffect } from 'react';
 import { useDropzone } from 'react-dropzone';
 import { useDispatch, useSelector } from 'react-redux';
+import { toast } from 'react-toastify';
 
 import drop from '../../assets/svg/drop.svg';
 
@@ -16,9 +17,25 @@ const UploadImage = ({ setSelected, values }) => {
   const { getRootProps, getInputProps } = useDropzone({
     accept: 'image/*',
     maxSize: 409600,
-    onDrop: (acceptedFiles) => {
+    onDrop: (acceptedFiles, fileRejections) => {
       acceptedFiles.map((file) => dispatch(postUploadImage(file)));
+
+      fileRejections.forEach((file) => {
+        file.errors.forEach((err) => {
+          if (err.code === 'file-too-large') {
+            toast.error(`Dosya boyutu 400kb'den fazla.`, {
+              position: 'top-right',
+              autoClose: 3000,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+            });
+          }
+        });
+      });
     },
+    maxFilesize: 1, // max file size in MB,
   });
 
   useEffect(() => {
@@ -40,7 +57,7 @@ const UploadImage = ({ setSelected, values }) => {
         uploadImageData.uploadImageData?.url.length === 0 && (
           <div {...getRootProps()}>
             <input {...getInputProps()} />
-            <div className="dropArea">
+            <div className="dropArea" error={uploadImageData.errors}>
               <img src={drop} alt="drop" />
               <h3>Sürükleyip bırakarak</h3>
               <h3 className="orH">veya</h3>
