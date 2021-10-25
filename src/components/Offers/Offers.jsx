@@ -145,6 +145,15 @@ const Offers = () => {
               </div>
               <div
                 className={
+                  item.isSold && item.status === 'rejected'
+                    ? 'rejectOffer displayBlock'
+                    : 'displayNone'
+                }
+              >
+                <p>Reddedildi</p>
+              </div>
+              <div
+                className={
                   item.isSold && item.status === 'offered' && offerState
                     ? 'rejectOffer displayBlock'
                     : 'displayNone'
@@ -172,12 +181,25 @@ const Offers = () => {
               </div>
               <div
                 className={
-                  item.isSold && item.status && !offerState
+                  item.isSold === 'sold' &&
+                  item.status === 'accepted' &&
+                  !offerState
                     ? 'soldOffer displayBlock'
                     : 'displayNone'
                 }
               >
                 <p>Satın Alındı</p>
+              </div>
+              <div
+                className={
+                  item.isSold === 'sold' &&
+                  item.status === 'offered' &&
+                  !offerState
+                    ? 'rejectOffer displayBlock'
+                    : 'displayNone'
+                }
+              >
+                <p>Ürün satılmış</p>
               </div>
               <div
                 className={
