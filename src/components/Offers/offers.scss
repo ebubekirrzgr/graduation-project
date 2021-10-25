@@ -77,6 +77,12 @@
     }
     .offerProductDetail {
       display: flex;
+      width: 100%;
+      > .offerMain {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+      }
       > img {
         width: 78px;
         height: 84px;
@@ -166,7 +172,32 @@
 
 .displayBlock {
   display: flex;
+  align-items: center;
 }
 .displayNone {
   display: none;
+}
+
+@media (max-width: 465px) {
+  .offerMain {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    &:not(.receivedOffer) {
+      > div {
+        width: 100%;
+      }
+    }
+    p {
+      width: 100%;
+      text-align: right;
+      margin-bottom: 5px;
+    }
+    .offerDetail {
+      width: 100%;
+      margin-top: 10px !important;
+    }
+  }
 }
