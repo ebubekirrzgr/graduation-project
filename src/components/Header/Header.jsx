@@ -12,6 +12,7 @@ function Header() {
   const history = useHistory();
 
   const handleClick = (url) => history.push(url);
+  const isLoggedIn = window.localStorage.getItem('token');
 
   return (
     <div className="header">
@@ -25,28 +26,42 @@ function Header() {
         >
           <img src={Logo} alt="logo" />
         </div>
-        <div className="header__buttons">
+        {isLoggedIn && (
+          <div className="header__buttons">
+            <Button
+              type="submit"
+              theme="secondary"
+              size="medium"
+              className="styledButton"
+              onClick={() => handleClick('/ProductAdd')}
+            >
+              <img src={Plus} alt="plus-svg" />
+              Ürün Ekle
+            </Button>
+
+            <Button
+              type="submit"
+              theme="secondary"
+              size="medium"
+              className="styledButton"
+              onClick={() => handleClick('/Account')}
+            >
+              <img src={User} alt="plus-svg" />
+              Hesabım
+            </Button>
+          </div>
+        )}
+        {!isLoggedIn && (
           <Button
             type="submit"
             theme="secondary"
             size="medium"
             className="styledButton"
-            onClick={() => handleClick('/ProductAdd')}
+            onClick={() => handleClick('/Login')}
           >
-            <img src={Plus} alt="plus-svg" />
-            Ürün Ekle
+            Giriş Yap
           </Button>
-          <Button
-            type="submit"
-            theme="secondary"
-            size="medium"
-            className="styledButton"
-            onClick={() => handleClick('/Account')}
-          >
-            <img src={User} alt="plus-svg" />
-            Hesabım
-          </Button>
-        </div>
+        )}
       </div>
     </div>
   );
