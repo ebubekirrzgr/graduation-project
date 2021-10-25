@@ -44,16 +44,18 @@ const postOffer = (offerId, obj) => async (dispatch) => {
     })
     .catch((error) => {
       dispatch(fetchError(error));
-      toast.error('Kendi ürünüze teklif veremezsiniz.', {
-        position: 'top-right',
-        autoClose: 3000,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-      });
+      if (error.response.status !== 401 && error.response.status !== 404) {
+        toast.error('Kendi ürünüze teklif veremezsiniz.', {
+          position: 'top-right',
+          autoClose: 3000,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+      }
     })
-    .then(() => {
+    .finally(() => {
       dispatch(fetchProductDetail(offerId));
       dispatch(fetchGivenOffers());
     });
