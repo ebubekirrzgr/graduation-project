@@ -27,14 +27,8 @@ const uploadImageReducer = (state = initialState, action) => {
         uploadProgress: 0,
       };
 
-    case UPLOAD_IMAGE.FETCH_UPLOAD_IMAGE_DELETE:
-      return {
-        ...state,
-        isFetching: false,
-        isError: false,
-        uploadImageData: { url: '' },
-        uploadProgress: 0,
-      };
+    case UPLOAD_IMAGE.UPLOAD_IMAGE_DELETE:
+      return { ...initialState };
 
     case UPLOAD_IMAGE.FETCH_UPLOAD_IMAGE_ERROR:
       return {

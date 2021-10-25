@@ -10,10 +10,6 @@ const uploadImageSuccess = (message) => ({
   payload: message,
 });
 
-export const uploadImageDelete = () => ({
-  type: UPLOAD_IMAGE.FETCH_UPLOAD_IMAGE_DELETE,
-});
-
 const uploadImageError = (err) => ({
   type: UPLOAD_IMAGE.FETCH_UPLOAD_IMAGE_ERROR,
   payload: err,
@@ -22,6 +18,10 @@ const uploadImageError = (err) => ({
 const uploadImageProgress = (progress) => ({
   type: UPLOAD_IMAGE.UPLOAD_IMAGE_PROGRESS,
   payload: progress,
+});
+
+export const uploadImageDelete = () => ({
+  type: UPLOAD_IMAGE.UPLOAD_IMAGE_DELETE,
 });
 
 const postUploadImage = (data) => async (dispatch) => {

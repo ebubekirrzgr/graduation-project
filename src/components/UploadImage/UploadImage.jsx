@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import './uploadImage.scss';
 
-import postUploadImage from 'actions/uploadImage';
+import postUploadImage, { uploadImageDelete } from 'actions/uploadImage';
 import ProgressBar from 'components/ProgressBar/ProgressBar';
 import React, { useEffect } from 'react';
 import { useDropzone } from 'react-dropzone';
@@ -15,7 +15,7 @@ const UploadImage = ({ setSelected, values }) => {
   const uploadImageData = useSelector((state) => state.uploadImage);
 
   const { getRootProps, getInputProps } = useDropzone({
-    accept: 'image/*',
+    accept: 'image/jpeg, image/png, image/jpg',
     maxSize: 409600,
     onDrop: (acceptedFiles, fileRejections) => {
       acceptedFiles.map((file) => dispatch(postUploadImage(file)));
@@ -73,7 +73,13 @@ const UploadImage = ({ setSelected, values }) => {
             src={uploadImageData.uploadImageData.url}
             alt="uploadImage"
           />
-          <div className="imageDeleteButton">X</div>
+          <span
+            onClick={() => dispatch(uploadImageDelete())}
+            className="imageDeleteButton"
+            aria-hidden="true"
+          >
+            X
+          </span>
         </div>
       )}
     </div>
