@@ -64,3 +64,20 @@
     }
   }
 }
+
+@media (max-width: 730px) {
+  .uploadImage {
+    margin-top: 25px;
+  }
+  .productAddForm__productPrice {
+    > input {
+      width: 353px;
+    }
+  }
+}
+
+@media (max-width: 400px) {
+  .productAdd {
+    padding: 15px;
+  }
+}
