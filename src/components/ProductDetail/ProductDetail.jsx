@@ -60,137 +60,142 @@ const ProductDetail = () => {
             <h1 className="product__title">
               {productDetail.productDetailData.title}
             </h1>
-            <div className="product__specification">
-              <div className="product__brand">
-                <h5>Marka: </h5>
-                <span>{productDetail.productDetailData.brand.title}</span>
+            <div className="product__titleAndSpec">
+              <div className="product__specification">
+                <div className="product__brand">
+                  <h5>Marka: </h5>
+                  <span>{productDetail?.productDetailData.brand.title}</span>
+                </div>
+                <div className="product__color">
+                  <h5>Renk: </h5>
+                  <span>{productDetail?.productDetailData.color.title}</span>
+                </div>
+                <div className="product__status">
+                  <h5>Kullanım Durumu: </h5>
+                  <span>{productDetail?.productDetailData.status.title}</span>
+                </div>
               </div>
-              <div className="product__color">
-                <h5>Renk: </h5>
-                <span>{productDetail.productDetailData.color.title}</span>
-              </div>
-              <div className="product__status">
-                <h5>Kullanım Durumu: </h5>
-                <span>{productDetail.productDetailData.status.title}</span>
+              <div>
+                <h2 className="product__price">
+                  <span>
+                    {productDetail.productDetailData.price
+                      .toLocaleString('tr-TR', {
+                        style: 'currency',
+                        currency: 'TRY',
+                      })
+                      .slice(1)}
+                  </span>{' '}
+                  TL
+                </h2>
               </div>
             </div>
 
-            <h2 className="product__price">
-              <span>
-                {productDetail.productDetailData.price
-                  .toLocaleString('tr-TR', {
-                    style: 'currency',
-                    currency: 'TRY',
-                  })
-                  .slice(1)}
-              </span>{' '}
-              TL
-            </h2>
-
-            <div
-              className={
-                productDetail.productDetailData.isSold
-                  ? 'isSoldButton buttonDisplayBlock'
-                  : 'buttonDisplayNone'
-              }
-            >
-              <Button
-                type="submit"
-                theme="warning"
-                size="large"
-                className="confirmModalBtn"
-              >
-                Bu Ürün Satışta Değil
-              </Button>
-            </div>
-
-            {productDetail.productDetailData.id ===
-              givenOffer[0]?.product?.id && (
+            <div className="productDetailAllButtons">
               <div
                 className={
-                  !productDetail.productDetailData.isSold
+                  productDetail.productDetailData.isSold
                     ? 'isSoldButton buttonDisplayBlock'
                     : 'buttonDisplayNone'
                 }
               >
                 <Button
                   type="submit"
-                  theme="offer"
-                  size="medium"
-                  className="givenOfferButton"
+                  theme="warning"
+                  size="large"
+                  className="confirmModalBtn"
                 >
-                  Verilen Teklif:
-                  <h5>
-                    {givenOffer[0].offeredPrice
-                      .toLocaleString('tr-TR', {
-                        style: 'currency',
-                        currency: 'TRY',
-                      })
-                      .slice(1)}{' '}
-                    TL
-                  </h5>
+                  Bu Ürün Satışta Değil
                 </Button>
               </div>
-            )}
 
-            {/*  I control the sales status here */}
-            {!productDetail.productDetailData.isSold &&
-              productDetail.productDetailData.id !==
+              {productDetail.productDetailData.id ===
                 givenOffer[0]?.product?.id && (
-                <div className="product__offerButtons">
+                <div
+                  className={
+                    !productDetail.productDetailData.isSold
+                      ? 'isSoldButton buttonDisplayBlock'
+                      : 'buttonDisplayNone'
+                  }
+                >
                   <Button
                     type="submit"
-                    theme="primary"
-                    size="large"
-                    className="confirmModalBtn"
-                    onClick={() => {
-                      setConfirmModal(true);
-                    }}
+                    theme="offer"
+                    size="medium"
+                    className="givenOfferButton"
                   >
-                    Satın Al
-                  </Button>
-                  <Button
-                    type="submit"
-                    theme="secondary"
-                    size="large"
-                    className="offerModalBtn"
-                    onClick={() => {
-                      setOfferModal(true);
-                    }}
-                  >
-                    Teklif Ver
+                    Verilen Teklif:
+                    <h5>
+                      {givenOffer[0].offeredPrice
+                        .toLocaleString('tr-TR', {
+                          style: 'currency',
+                          currency: 'TRY',
+                        })
+                        .slice(1)}{' '}
+                      TL
+                    </h5>
                   </Button>
                 </div>
               )}
 
-            {!productDetail.productDetailData.isSold &&
-              productDetail.productDetailData.id ===
-                givenOffer[0]?.product?.id && (
-                <div className="product__offerButtons">
-                  <Button
-                    type="submit"
-                    theme="primary"
-                    size="large"
-                    className="confirmModalBtn"
-                    onClick={() => {
-                      setConfirmModal(true);
-                    }}
-                  >
-                    Satın Al
-                  </Button>
-                  <Button
-                    type="submit"
-                    theme="secondary"
-                    size="large"
-                    className="offerModalBtn"
-                    onClick={() => {
-                      setCancelModal(true);
-                    }}
-                  >
-                    Teklifi Geri Çek
-                  </Button>
-                </div>
-              )}
+              {/*  I control the sales status here */}
+              {!productDetail.productDetailData.isSold &&
+                productDetail.productDetailData.id !==
+                  givenOffer[0]?.product?.id && (
+                  <div className="product__offerButtons">
+                    <Button
+                      type="submit"
+                      theme="primary"
+                      size="large"
+                      className="confirmModalBtn"
+                      onClick={() => {
+                        setConfirmModal(true);
+                      }}
+                    >
+                      Satın Al
+                    </Button>
+                    <Button
+                      type="submit"
+                      theme="secondary"
+                      size="large"
+                      className="offerModalBtn"
+                      onClick={() => {
+                        setOfferModal(true);
+                      }}
+                    >
+                      Teklif Ver
+                    </Button>
+                  </div>
+                )}
+
+              {!productDetail.productDetailData.isSold &&
+                productDetail.productDetailData.id ===
+                  givenOffer[0]?.product?.id && (
+                  <div className="product__offerButtons">
+                    <Button
+                      type="submit"
+                      theme="primary"
+                      size="large"
+                      className="confirmModalBtn"
+                      onClick={() => {
+                        setConfirmModal(true);
+                      }}
+                    >
+                      Satın Al
+                    </Button>
+                    <Button
+                      type="submit"
+                      theme="secondary"
+                      size="large"
+                      className="offerModalBtn"
+                      onClick={() => {
+                        setCancelModal(true);
+                      }}
+                    >
+                      Teklifi Geri Çek
+                    </Button>
+                  </div>
+                )}
+            </div>
 
             {openConfirmModal && (
               <ConfirmModal

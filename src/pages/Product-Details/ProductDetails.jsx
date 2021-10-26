@@ -7,7 +7,9 @@ import React from 'react';
 const ProductDetails = () => (
   <>
     <Header />
-    <ProductDetail />
+    <div className="container">
+      <ProductDetail />
+    </div>
   </>
 );
 
