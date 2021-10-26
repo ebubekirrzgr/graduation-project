@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router';
 
 import fetchProductDetails from '../../actions/productDetail';
-import spinner from '../../assets/loading.gif';
+import spinner from '../../assets/loading.svg';
 import Button from '../Button/Button';
 import ConfirmModal from '../Modals/ConfirmModal/confirmModal';
 import OfferModal from '../Modals/OfferModal/offerModal';

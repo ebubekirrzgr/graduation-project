@@ -8,7 +8,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import Banner from '../../assets/images/Banner.png';
-import spinner from '../../assets/loading.gif';
+import spinner from '../../assets/loading.svg';
 
 const Home = () => {
   const { isError, isFetching } = useSelector((state) => state.products);

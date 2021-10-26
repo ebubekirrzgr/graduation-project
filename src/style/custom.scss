@@ -31,3 +31,9 @@ body {
   width: 321px !important;
   height: 60px !important;
 }
+
+.spinner {
+  > img {
+    width: 45%;
+  }
+}
