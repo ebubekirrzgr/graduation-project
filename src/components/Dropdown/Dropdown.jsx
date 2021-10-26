@@ -3,13 +3,13 @@ import './dropdown.scss';
 
 import down from '../../assets/svg/down.svg';
 
-function Dropdown({ options, title, value, setDropdown }) {
+function Dropdown({ options, title, value, setDropdown, className }) {
   const selectOption = (item) => {
     setDropdown(item);
   };
   return (
     <div className="dropdown">
-      <div className="dropdown-select">
+      <div className={className}>
         <span className="select">
           {value.title.length > 0 ? value.title : title}
         </span>

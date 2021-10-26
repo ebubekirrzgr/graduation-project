@@ -56,10 +56,10 @@ const ProductAddForm = ({ handleChange, values, errors, setValues }) => {
             handleChange();
           }}
           value={values.title}
-          className={errors.title ? '' : 'errorInput'}
+          className={errors.title && 'errorInput'}
         />
+        <p className="errorMessage">{errors?.title}</p>
       </div>
-
       <div className="productAddForm__productDescription">
         <h2>Ürün Açıklaması</h2>
         <textarea
@@ -73,9 +73,11 @@ const ProductAddForm = ({ handleChange, values, errors, setValues }) => {
             handleChange();
           }}
           value={values.description}
+          className={errors.description && 'errorTextArea'}
         >
           {}
         </textarea>
+        <p className="errorMessage">{errors?.description}</p>
       </div>
 
       <div className="productDropdown1">
@@ -88,7 +90,13 @@ const ProductAddForm = ({ handleChange, values, errors, setValues }) => {
             title="Kategori Seç"
             handleChange={handleChange}
             value={values.category}
+            className={
+              errors.category
+                ? 'dropdown-select errorDropdown'
+                : 'dropdown-select'
+            }
           />
+          <p className="errorMessage">{errors?.category}</p>
         </div>
         <div className="productBrand">
           <h2 className="dropdownH">Marka</h2>
@@ -99,7 +107,11 @@ const ProductAddForm = ({ handleChange, values, errors, setValues }) => {
             title="Marka Seç"
             handleChange={handleChange}
             value={values.brand}
+            className={
+              errors.brand ? 'dropdown-select errorDropdown' : 'dropdown-select'
+            }
           />
+          <p className="errorMessage">{errors?.brand}</p>
         </div>
       </div>
 
@@ -113,7 +125,11 @@ const ProductAddForm = ({ handleChange, values, errors, setValues }) => {
             handleChange={handleChange}
             value={values.color}
             title="Renk Seç"
+            className={
+              errors.color ? 'dropdown-select errorDropdown' : 'dropdown-select'
+            }
           />
+          <p className="errorMessage">{errors?.color}</p>
         </div>
         <div className="productStatus">
           <h2 className="dropdownH">Kullanım Durumu</h2>
@@ -124,7 +140,13 @@ const ProductAddForm = ({ handleChange, values, errors, setValues }) => {
             title="Kullanım durumu Seç"
             handleChange={handleChange}
             value={values.status}
+            className={
+              errors.status
+                ? 'dropdown-select errorDropdown'
+                : 'dropdown-select'
+            }
           />
+          <p className="errorMessage">{errors?.status}</p>
         </div>
       </div>
 
@@ -139,7 +161,10 @@ const ProductAddForm = ({ handleChange, values, errors, setValues }) => {
           type="number"
           placeholder="Bir fiyat girin"
           value={values.price}
+          className={errors.price && 'errorInput'}
         />
+        <p className="errorMessage">{errors?.price}</p>
+
         <div className="offerOption">
           <h2>Fiyat ve Teklif opsiyonu</h2>
 

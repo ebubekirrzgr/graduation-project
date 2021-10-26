@@ -10,7 +10,7 @@ import { toast } from 'react-toastify';
 
 import drop from '../../assets/svg/drop.svg';
 
-const UploadImage = ({ setSelected, values }) => {
+const UploadImage = ({ setSelected, values, errors }) => {
   const dispatch = useDispatch();
   const uploadImageData = useSelector((state) => state.uploadImage);
 
@@ -57,7 +57,12 @@ const UploadImage = ({ setSelected, values }) => {
         uploadImageData.uploadImageData?.url.length === 0 && (
           <div {...getRootProps()}>
             <input {...getInputProps()} />
-            <div className="dropArea" error={uploadImageData.errors}>
+            <div
+              error={uploadImageData.errors}
+              className={
+                errors.imageUrl ? 'errorDropArea dropArea' : 'dropArea'
+              }
+            >
               <img src={drop} alt="drop" />
               <h3>Sürükleyip bırakarak</h3>
               <h3 className="orH">veya</h3>

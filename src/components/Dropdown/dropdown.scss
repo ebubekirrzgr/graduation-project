@@ -118,3 +118,8 @@
 .dropdown-list::-webkit-scrollbar-thumb:hover {
   background: $gray-300;
 }
+
+.errorDropdown {
+  background-color: $red-100;
+  border: 1px solid $red;
+}

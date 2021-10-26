@@ -81,3 +81,11 @@
     padding: 15px;
   }
 }
+
+.errorDropArea {
+  background-color: $red-100;
+  border: 1px dashed $red !important;
+  > button {
+    border: 1px solid $red !important;
+  }
+}
