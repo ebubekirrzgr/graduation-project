@@ -102,6 +102,6 @@ It is the graduate project of the Bootcamp realized in cooperation with ÇiçekS
 
 
 
- <h1>125.  &nbsp;
-  <img width="150" height="53" align="center" src="https://cdn03.ciceksepeti.com/Themes/Ciceksepeti/Assets/images/logo-new-ciceksepeti.png?v=3.1.1.35259">  &nbsp;React Front End Bootcamp by <img width="120" height="100" align="center" src="https://uploads-ssl.webflow.com/6097e0eca1e87557da031fef/609859a191abe5d64b17fed3_Patika%20logo-p-500.png">
-</h1>
+ <h2>125.  &nbsp;
+  <img width="160" height="53" align="center" src="https://cdn03.ciceksepeti.com/Themes/Ciceksepeti/Assets/images/logo-new-ciceksepeti.png?v=3.1.1.35259">  &nbsp;React Front End Bootcamp by <img width="120" height="100" align="center" src="https://uploads-ssl.webflow.com/6097e0eca1e87557da031fef/609859a191abe5d64b17fed3_Patika%20logo-p-500.png">
+</h2>
