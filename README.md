@@ -91,6 +91,18 @@ It is the graduate project of the Bootcamp realized in cooperation with ÇiçekS
    yarn start
    ```
 
+## Lighthouse Results
+
+---
+
+- ### Desktop
+
+![homepage](C:\Users\ebubek\Desktop\lighthouse\homepage.png)
+
+- ### Mobile
+
+![homepage_mobile](C:\Users\ebubek\Desktop\lighthouse\homepage_mobile.png)
+
 ## Contact & Links
 
 ---
