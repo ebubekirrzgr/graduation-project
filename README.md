@@ -99,11 +99,11 @@ Live demo avaliable [here](https://ebubekir-ruzgar-graduation-project.vercel.app
 
 - ### Desktop
 
-![homepage](C:\Users\ebubek\Desktop\lighthouse\homepage.png)
+![homepage](https://raw.githubusercontent.com/ebubekirrzgr/graduation-project/master/src/assets/lighthouse/homepage_desktop.png)
 
 - ### Mobile
 
-![homepage_mobile](C:\Users\ebubek\Desktop\lighthouse\homepage_mobile.png)
+![homepage_mobile](https://raw.githubusercontent.com/ebubekirrzgr/graduation-project/master/src/assets/lighthouse/homepage_mobile.png)
 
 ## Contact & Links
 
